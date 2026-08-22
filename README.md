@@ -1,3 +1,5 @@
+<img width="2056" height="883" alt="image" src="https://github.com/user-attachments/assets/b8ab105d-acc9-4b71-b59d-71caadfff2c3" />
+
 # KernelScope-Hy3: Process-Guided Test-Time GPU Kernel Optimization
 
 **面向推理引擎 GPU 算子生成的过程评估、错误定位与测试时优化系统**
