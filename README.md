@@ -4,9 +4,9 @@
 
 **面向推理引擎 GPU 算子生成的过程评估、错误定位与测试时优化系统**
 
-KernelScope-Hy3 是一个面向推理引擎 GPU 算子生成的可验证应用。系统把算子需求、结构化工程决策、源码证据、独立 oracle、H200 执行结果和性能基线串成一条可审计链路，并在测试时通过多候选搜索和反馈迭代选择更好的 kernel。
+KernelScope-Hy3 是一个面向推理引擎 GPU 算子生成的可验证应用，题集从 SGLang、Miles、FlashInfer、TileLang 和 Tencent HPC-Ops 等工业界项目中抽取核心算子语义，再重构为独立可校验任务。系统把算子需求、结构化工程决策、源码证据、独立 oracle、H200 执行结果和性能基线串成一条可审计链路，并在测试时通过多候选搜索和反馈迭代选择更好的 kernel。
 
-当前仓库已经完成题集、oracle、过程静态检查、性能基线、受控错误集、评分器和 Test-Time Search；尚未接入 Hy3/SGLang Generator 与 Judge。接入 Hy3 是应用层的最后一个主要缺口，不需要修改下层评估协议。
+本仓库当前定位为 **Hy3 应用的评估与测试时优化底座**：题集、oracle、过程静态检查、性能基线、受控错误集、评分器和 Test-Time Search 已完成；Hy3/SGLang Generator 与 Judge 仍是应用层待接入组件。接入后，SGLang 负责承载 Hy3 的结构化候选生成和过程复核请求，KernelScope 负责独立验证、错误定位、H200 性能测量与反馈闭环。该接入只实现 provider/adapter，不改变下层评估协议，因此可以在不训练或微调模型的前提下完成端到端应用。
 
 ## Abstract
 
@@ -84,7 +84,7 @@ flowchart TD
 
 ### 题集
 
-当前目录包含 17 个任务，覆盖 SGLang、FlashInfer、TileLang 和 Tencent HPC-Ops 来源。6 个任务已达到 `tests_ready`：
+当前目录包含 17 个任务，覆盖 SGLang、Miles、FlashInfer、TileLang 和 Tencent HPC-Ops 来源。数据集优先抽取工业界推理引擎中真实出现的核心算子，再将其重写为独立、可校验、可定位错误的任务；上游实现用于确定语义、边界和性能目标，不直接作为模型可见的标准答案。6 个任务已达到 `tests_ready`：
 
 - RMSNorm
 - Attention State Merge
@@ -92,6 +92,20 @@ flowchart TD
 - Online Softmax
 - HPC-Ops Fused RMSNorm + FP8 Scale
 - HPC-Ops BF16 x FP32 Route GEMM
+
+### 数据集组成与来源
+
+题集按“工业来源 -> 算子语义 -> 可验证任务”的流程构建。每道题均保存 `task_id`、输入输出规格、layout/dtype 约束、公开与隐藏 cases、独立 oracle、参考性能 envelope、来源 commit/path 和许可证信息。这样既覆盖真实生产算子，也避免把某个项目的实现细节当成模型必须复述的答案。
+
+| 来源 | 抽取的工业核心算子/能力 | 在题集中的作用 | 标准答案与验证方式 |
+|---|---|---|---|
+| SGLang | RMSNorm、融合激活、MoE routing、attention state merge | 推理引擎基础路径与融合算子 | 独立 PyTorch/NumPy oracle + CUDA correctness gate + H200 基线 |
+| Miles | INT4/量化路径、MoE backward、训练/推理交界算子 | 补充量化、稀疏和反向计算边界 | 规格重写后进入扩展题；需额外标注版本和支持域 |
+| FlashInfer | sampling、cascade attention、paged KV、decode 相关 API | 覆盖 KV cache、动态序列和采样 | API 只提供语义参考，oracle 与隐藏测试独立实现 |
+| TileLang | tiled GEMM、online softmax、attention 模板 | 覆盖 tile、warp、shared memory 与布局变换 | 题面隐藏模板细节，使用独立 reference envelope 评估性能 |
+| Tencent HPC-Ops | FP8 RMSNorm、Route/Grouped GEMM、RoPE/KV、decode attention | 提供工业级高性能与 H200 特性题 | 原生实现仅作 provider baseline；记录 commit、许可证和适配差异 |
+
+目前题集的 17 道任务按 Easy/Medium/Hard 分层，覆盖 elementwise/norm、reduction/softmax、quantization、GEMM/MoE、KV-cache/attention、fusion 六类优化。分层依据包括计算强度、内存访问复杂度、同步原语、动态 shape、数值精度和 H200 特性依赖。公开 cases 用于反馈迭代，隐藏及 metamorphic cases 用于识别弱测试、边界遗漏和“结果正确但过程不成立”。完整来源审计见 [datasets/SOURCES.md](datasets/SOURCES.md)。
 
 题目按 Easy/Medium/Hard 分层，case 覆盖非对齐尺寸、尾部、Inf/极值、FP8、精度残差和 provider 支持域。
 
