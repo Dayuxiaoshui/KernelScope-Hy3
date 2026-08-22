@@ -1,0 +1,166 @@
+{
+  "schema_version": "1.0",
+  "environment": {
+    "cuda_available": true,
+    "device_index": 0,
+    "device_name": "NVIDIA H200",
+    "compute_capability": [
+      9,
+      0
+    ],
+    "total_memory_bytes": 150111977472,
+    "torch_version": "2.11.0+cu130",
+    "torch_cuda_version": "13.0"
+  },
+  "protocol": {
+    "warmup": 50,
+    "iterations": 100,
+    "launches_per_sample": 20
+  },
+  "records": [
+    {
+      "case": {
+        "case_id": "softmax-perf-public-1",
+        "task_id": "online_softmax",
+        "visibility": "public",
+        "parameters": {
+          "rows": 256,
+          "cols": 1024,
+          "dtype": "float16"
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "measurement": {
+        "provider": "triton_audited",
+        "median_us": 14.298400282859802,
+        "p10_us": 14.059199392795563,
+        "p90_us": 14.86240029335022,
+        "cv": 0.12129411310968838,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "softmax-perf-public-1",
+        "task_id": "online_softmax",
+        "visibility": "public",
+        "parameters": {
+          "rows": 256,
+          "cols": 1024,
+          "dtype": "float16"
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 21.671999990940094,
+        "p10_us": 21.41759991645813,
+        "p90_us": 22.21760004758835,
+        "cv": 0.015338930191813592,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "softmax-perf-hidden-tail",
+        "task_id": "online_softmax",
+        "visibility": "hidden",
+        "parameters": {
+          "rows": 89,
+          "cols": 1537,
+          "dtype": "float16"
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "measurement": {
+        "provider": "triton_audited",
+        "median_us": 14.034400135278702,
+        "p10_us": 13.870400190353394,
+        "p90_us": 14.4896000623703,
+        "cv": 0.024737807143072416,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "softmax-perf-hidden-tail",
+        "task_id": "online_softmax",
+        "visibility": "hidden",
+        "parameters": {
+          "rows": 89,
+          "cols": 1537,
+          "dtype": "float16"
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 22.034399956464767,
+        "p10_us": 21.771200001239777,
+        "p90_us": 22.655999660491943,
+        "cv": 0.16241464487719948,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "softmax-perf-hidden-wide",
+        "task_id": "online_softmax",
+        "visibility": "hidden",
+        "parameters": {
+          "rows": 32,
+          "cols": 8192,
+          "dtype": "bfloat16"
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "measurement": {
+        "provider": "triton_audited",
+        "median_us": 14.036799967288971,
+        "p10_us": 13.814400136470795,
+        "p90_us": 14.430400729179382,
+        "cv": 0.01893698543730706,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "softmax-perf-hidden-wide",
+        "task_id": "online_softmax",
+        "visibility": "hidden",
+        "parameters": {
+          "rows": 32,
+          "cols": 8192,
+          "dtype": "bfloat16"
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 21.540799736976624,
+        "p10_us": 19.276799261569977,
+        "p90_us": 22.145600616931915,
+        "cv": 0.2749081351363163,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    }
+  ]
+}

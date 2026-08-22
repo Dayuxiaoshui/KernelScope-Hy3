@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kernelscope-hy3"
+version = "0.1.0"
+description = "Evidence-driven process evaluation for Hy3 kernel generation"
+requires-python = ">=3.10"
+
+[project.scripts]
+kernelscope = "kernelscope.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0",
+  "environment": {
+    "cuda_available": true,
+    "device_index": 0,
+    "device_name": "NVIDIA H200",
+    "compute_capability": [
+      9,
+      0
+    ],
+    "total_memory_bytes": 150111977472,
+    "torch_version": "2.11.0+cu130",
+    "torch_cuda_version": "13.0"
+  },
+  "protocol": {
+    "warmup": 30,
+    "iterations": 60,
+    "launches_per_sample": 10
+  },
+  "records": [
+    {
+      "case": {
+        "case_id": "scaled-rms-perf-public",
+        "task_id": "hpc_rmsnorm_scale",
+        "visibility": "public",
+        "parameters": {
+          "tokens": 16,
+          "hidden": 5120,
+          "scale": 2.5
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "measurement": {
+        "provider": "hpc_ops_native",
+        "median_us": 10.899200290441513,
+        "p10_us": 10.761599987745285,
+        "p90_us": 11.407999694347382,
+        "cv": 0.02598946873272716,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "scaled-rms-perf-public",
+        "task_id": "hpc_rmsnorm_scale",
+        "visibility": "public",
+        "parameters": {
+          "tokens": 16,
+          "hidden": 5120,
+          "scale": 2.5
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 81.4655989408493,
+        "p10_us": 80.26559948921204,
+        "p90_us": 86.26880049705505,
+        "cv": 0.12913362302635972,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "scaled-rms-perf-hidden",
+        "task_id": "hpc_rmsnorm_scale",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 17,
+          "hidden": 4096,
+          "scale": 0.125
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "measurement": {
+        "provider": "hpc_ops_native",
+        "median_us": 10.868800058960915,
+        "p10_us": 10.579200088977814,
+        "p90_us": 12.84479945898056,
+        "cv": 0.09489745285882949,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "scaled-rms-perf-hidden",
+        "task_id": "hpc_rmsnorm_scale",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 17,
+          "hidden": 4096,
+          "scale": 0.125
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 81.21280074119568,
+        "p10_us": 80.57600259780884,
+        "p90_us": 83.70879888534546,
+        "cv": 0.13340335481162216,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    }
+  ]
+}

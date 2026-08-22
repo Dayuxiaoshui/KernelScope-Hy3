@@ -1,0 +1,222 @@
+{
+  "schema_version": "1.0",
+  "environment": {
+    "cuda_available": true,
+    "device_index": 0,
+    "device_name": "NVIDIA H200",
+    "compute_capability": [
+      9,
+      0
+    ],
+    "total_memory_bytes": 150111977472,
+    "torch_version": "2.11.0+cu130",
+    "torch_cuda_version": "13.0"
+  },
+  "protocol": {
+    "warmup": 50,
+    "iterations": 100,
+    "launches_per_sample": 20
+  },
+  "records": [
+    {
+      "case": {
+        "case_id": "scaled-rms-perf-public",
+        "task_id": "hpc_rmsnorm_scale",
+        "visibility": "public",
+        "parameters": {
+          "tokens": 16,
+          "hidden": 5120,
+          "scale": 2.5
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "hpc_ops_native",
+        "median_us": 10.248799994587898,
+        "p10_us": 10.127999633550644,
+        "p90_us": 10.553599894046783,
+        "cv": 0.3304967681645068,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "scaled-rms-perf-public",
+        "task_id": "hpc_rmsnorm_scale",
+        "visibility": "public",
+        "parameters": {
+          "tokens": 16,
+          "hidden": 5120,
+          "scale": 2.5
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 80.03600239753723,
+        "p10_us": 79.48160171508789,
+        "p90_us": 81.81120157241821,
+        "cv": 0.11007114850537214,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "scaled-rms-perf-hidden",
+        "task_id": "hpc_rmsnorm_scale",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 17,
+          "hidden": 4096,
+          "scale": 0.125
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "hpc_ops_native",
+        "median_us": 10.306400060653687,
+        "p10_us": 10.196799784898758,
+        "p90_us": 10.595200210809708,
+        "cv": 0.02240420300203667,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "scaled-rms-perf-hidden",
+        "task_id": "hpc_rmsnorm_scale",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 17,
+          "hidden": 4096,
+          "scale": 0.125
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 80.1912009716034,
+        "p10_us": 79.79199886322021,
+        "p90_us": 81.4079999923706,
+        "cv": 0.05411463253963178,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "route-perf-public",
+        "task_id": "hpc_route_gemm",
+        "visibility": "public",
+        "parameters": {
+          "m": 128,
+          "k": 4096,
+          "n": 256
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "hpc_ops_native",
+        "median_us": 15.02320021390915,
+        "p10_us": 14.880000054836273,
+        "p90_us": 15.31040072441101,
+        "cv": 0.015408543992462291,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "route-perf-public",
+        "task_id": "hpc_route_gemm",
+        "visibility": "public",
+        "parameters": {
+          "m": 128,
+          "k": 4096,
+          "n": 256
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 23.979199677705765,
+        "p10_us": 23.70080053806305,
+        "p90_us": 24.639999866485596,
+        "cv": 0.015361224272242723,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "route-perf-hidden-small-m",
+        "task_id": "hpc_route_gemm",
+        "visibility": "hidden",
+        "parameters": {
+          "m": 8,
+          "k": 4096,
+          "n": 256
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "hpc_ops_native",
+        "median_us": 14.91440013051033,
+        "p10_us": 14.767999947071075,
+        "p90_us": 15.296000242233276,
+        "cv": 0.1768343978782033,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "route-perf-hidden-small-m",
+        "task_id": "hpc_route_gemm",
+        "visibility": "hidden",
+        "parameters": {
+          "m": 8,
+          "k": 4096,
+          "n": 256
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 26.35039985179901,
+        "p10_us": 23.684799671173096,
+        "p90_us": 26.710399985313416,
+        "cv": 0.12520152930861495,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    }
+  ]
+}

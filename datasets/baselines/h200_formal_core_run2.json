@@ -1,0 +1,827 @@
+{
+  "schema_version": "1.0",
+  "environment": {
+    "cuda_available": true,
+    "device_index": 0,
+    "device_name": "NVIDIA H200",
+    "compute_capability": [
+      9,
+      0
+    ],
+    "total_memory_bytes": 150111977472,
+    "torch_version": "2.11.0+cu130",
+    "torch_cuda_version": "13.0"
+  },
+  "protocol": {
+    "warmup": 50,
+    "iterations": 100,
+    "launches_per_sample": 20
+  },
+  "records": [
+    {
+      "case": {
+        "case_id": "rms-perf-public-1",
+        "task_id": "rmsnorm",
+        "visibility": "public",
+        "parameters": {
+          "tokens": 32,
+          "hidden": 4096,
+          "dtype": "bfloat16"
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 7.420799881219864,
+        "p10_us": 7.255999743938446,
+        "p90_us": 7.708799839019775,
+        "cv": 0.030800209024564703,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "rms-perf-public-1",
+        "task_id": "rmsnorm",
+        "visibility": "public",
+        "parameters": {
+          "tokens": 32,
+          "hidden": 4096,
+          "dtype": "bfloat16"
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "flashinfer",
+        "median_us": 7.148800045251846,
+        "p10_us": 7.072000205516815,
+        "p90_us": 7.436800003051758,
+        "cv": 0.023906502625537507,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "rms-perf-public-1",
+        "task_id": "rmsnorm",
+        "visibility": "public",
+        "parameters": {
+          "tokens": 32,
+          "hidden": 4096,
+          "dtype": "bfloat16"
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 68.58879923820496,
+        "p10_us": 67.92640089988708,
+        "p90_us": 70.34080028533936,
+        "cv": 0.01344339484857788,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "rms-perf-hidden-1",
+        "task_id": "rmsnorm",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 89,
+          "hidden": 4096,
+          "dtype": "bfloat16"
+        },
+        "weight": 1.5,
+        "tags": [
+          "production"
+        ]
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 7.311199977993965,
+        "p10_us": 7.224000245332718,
+        "p90_us": 7.595200091600418,
+        "cv": 0.03584979806629028,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "rms-perf-hidden-1",
+        "task_id": "rmsnorm",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 89,
+          "hidden": 4096,
+          "dtype": "bfloat16"
+        },
+        "weight": 1.5,
+        "tags": [
+          "production"
+        ]
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "flashinfer",
+        "median_us": 7.221600040793419,
+        "p10_us": 7.132799923419952,
+        "p90_us": 7.48319998383522,
+        "cv": 0.02787848308819054,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "rms-perf-hidden-1",
+        "task_id": "rmsnorm",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 89,
+          "hidden": 4096,
+          "dtype": "bfloat16"
+        },
+        "weight": 1.5,
+        "tags": [
+          "production"
+        ]
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 68.66239905357361,
+        "p10_us": 68.03680062294006,
+        "p90_us": 69.73440051078796,
+        "cv": 0.0117535025116663,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "rms-perf-hidden-tail",
+        "task_id": "rmsnorm",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 19,
+          "hidden": 3584,
+          "dtype": "float16"
+        },
+        "weight": 1.2,
+        "tags": [
+          "nonstandard"
+        ]
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 7.315199822187424,
+        "p10_us": 7.220800220966339,
+        "p90_us": 7.646399736404419,
+        "cv": 0.030603783783114596,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "rms-perf-hidden-tail",
+        "task_id": "rmsnorm",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 19,
+          "hidden": 3584,
+          "dtype": "float16"
+        },
+        "weight": 1.2,
+        "tags": [
+          "nonstandard"
+        ]
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "flashinfer",
+        "median_us": 7.2175998240709305,
+        "p10_us": 7.13919997215271,
+        "p90_us": 7.430399954319,
+        "cv": 0.024649054449817173,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "rms-perf-hidden-tail",
+        "task_id": "rmsnorm",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 19,
+          "hidden": 3584,
+          "dtype": "float16"
+        },
+        "weight": 1.2,
+        "tags": [
+          "nonstandard"
+        ]
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 68.56400072574615,
+        "p10_us": 68.23679804801941,
+        "p90_us": 69.90079879760742,
+        "cv": 0.010835275671764996,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "merge-perf-public-1",
+        "task_id": "merge_state",
+        "visibility": "public",
+        "parameters": {
+          "tokens": 512,
+          "heads": 16,
+          "head_size": 64
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 7.9343996942043304,
+        "p10_us": 7.820799946784973,
+        "p90_us": 8.211199939250946,
+        "cv": 0.026506793759665366,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "merge-perf-public-1",
+        "task_id": "merge_state",
+        "visibility": "public",
+        "parameters": {
+          "tokens": 512,
+          "heads": 16,
+          "head_size": 64
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 210.60559749603271,
+        "p10_us": 209.11519527435303,
+        "p90_us": 212.10401058197021,
+        "cv": 0.00645440784347942,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "merge-perf-hidden-tail",
+        "task_id": "merge_state",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 613,
+          "heads": 32,
+          "head_size": 48
+        },
+        "weight": 1.5,
+        "tags": [
+          "tail"
+        ]
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 7.8648000955581665,
+        "p10_us": 7.7615998685359955,
+        "p90_us": 8.110400289297104,
+        "cv": 0.026458574018524198,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "merge-perf-hidden-tail",
+        "task_id": "merge_state",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 613,
+          "heads": 32,
+          "head_size": 48
+        },
+        "weight": 1.5,
+        "tags": [
+          "tail"
+        ]
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 210.60479879379272,
+        "p10_us": 209.0991973876953,
+        "p90_us": 288.03839683532715,
+        "cv": 0.17107484348728538,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "merge-perf-hidden-large",
+        "task_id": "merge_state",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 1536,
+          "heads": 32,
+          "head_size": 128
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 12.771199643611908,
+        "p10_us": 12.63359934091568,
+        "p90_us": 13.104000687599182,
+        "cv": 0.016504294880722085,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "merge-perf-hidden-large",
+        "task_id": "merge_state",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 1536,
+          "heads": 32,
+          "head_size": 128
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 211.63920164108276,
+        "p10_us": 210.71040630340576,
+        "p90_us": 305.2351951599121,
+        "cv": 0.1842093873711865,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "sampling-perf-public-topk",
+        "task_id": "sampling",
+        "visibility": "public",
+        "parameters": {
+          "batch": 32,
+          "vocab": 32000,
+          "top_k": 100
+        },
+        "weight": 1.0,
+        "tags": [
+          "top_k"
+        ]
+      },
+      "scope": "filtering_only",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 24.156799912452698,
+        "p10_us": 24.131199717521667,
+        "p90_us": 24.188800156116486,
+        "cv": 0.001398446606283686,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "sampling-perf-public-topk",
+        "task_id": "sampling",
+        "visibility": "public",
+        "parameters": {
+          "batch": 32,
+          "vocab": 32000,
+          "top_k": 100
+        },
+        "weight": 1.0,
+        "tags": [
+          "top_k"
+        ]
+      },
+      "scope": "filtering_only",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "flashinfer",
+        "median_us": 24.081599712371826,
+        "p10_us": 24.054400622844696,
+        "p90_us": 24.107199907302856,
+        "cv": 0.0011289223761767934,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "sampling-perf-hidden-topp",
+        "task_id": "sampling",
+        "visibility": "hidden",
+        "parameters": {
+          "batch": 99,
+          "vocab": 128256,
+          "top_p": 0.5
+        },
+        "weight": 1.5,
+        "tags": [
+          "top_p"
+        ]
+      },
+      "scope": "filtering_only",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 214.10880088806152,
+        "p10_us": 213.80319595336914,
+        "p90_us": 214.33439254760742,
+        "cv": 0.0011483551453875685,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "sampling-perf-hidden-topp",
+        "task_id": "sampling",
+        "visibility": "hidden",
+        "parameters": {
+          "batch": 99,
+          "vocab": 128256,
+          "top_p": 0.5
+        },
+        "weight": 1.5,
+        "tags": [
+          "top_p"
+        ]
+      },
+      "scope": "filtering_only",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "flashinfer",
+        "median_us": 260.55920124053955,
+        "p10_us": 260.315203666687,
+        "p90_us": 260.80639362335205,
+        "cv": 0.0011339882393036555,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "sampling-perf-hidden-small",
+        "task_id": "sampling",
+        "visibility": "hidden",
+        "parameters": {
+          "batch": 1,
+          "vocab": 111,
+          "top_k": 10
+        },
+        "weight": 1.2,
+        "tags": [
+          "top_k",
+          "tail"
+        ]
+      },
+      "scope": "filtering_only",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 10.993600264191628,
+        "p10_us": 10.884799808263779,
+        "p90_us": 11.2015999853611,
+        "cv": 0.016340083433500345,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "sampling-perf-hidden-small",
+        "task_id": "sampling",
+        "visibility": "hidden",
+        "parameters": {
+          "batch": 1,
+          "vocab": 111,
+          "top_k": 10
+        },
+        "weight": 1.2,
+        "tags": [
+          "top_k",
+          "tail"
+        ]
+      },
+      "scope": "filtering_only",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "flashinfer",
+        "median_us": 10.679999738931656,
+        "p10_us": 10.58719977736473,
+        "p90_us": 10.923200100660324,
+        "cv": 0.01619212086003792,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "softmax-perf-public-1",
+        "task_id": "online_softmax",
+        "visibility": "public",
+        "parameters": {
+          "rows": 256,
+          "cols": 1024,
+          "dtype": "float16"
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "triton_audited",
+        "median_us": 13.499200344085693,
+        "p10_us": 13.283200562000275,
+        "p90_us": 13.995200395584106,
+        "cv": 0.024386105958821847,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "softmax-perf-public-1",
+        "task_id": "online_softmax",
+        "visibility": "public",
+        "parameters": {
+          "rows": 256,
+          "cols": 1024,
+          "dtype": "float16"
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 20.504000037908554,
+        "p10_us": 20.311999320983887,
+        "p90_us": 20.865599811077118,
+        "cv": 0.012497340397325828,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "softmax-perf-hidden-tail",
+        "task_id": "online_softmax",
+        "visibility": "hidden",
+        "parameters": {
+          "rows": 89,
+          "cols": 1537,
+          "dtype": "float16"
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "triton_audited",
+        "median_us": 13.396799564361572,
+        "p10_us": 13.212800025939941,
+        "p90_us": 13.750399649143219,
+        "cv": 0.020748708336684775,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "softmax-perf-hidden-tail",
+        "task_id": "online_softmax",
+        "visibility": "hidden",
+        "parameters": {
+          "rows": 89,
+          "cols": 1537,
+          "dtype": "float16"
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 20.54399996995926,
+        "p10_us": 20.366400480270386,
+        "p90_us": 20.841600000858307,
+        "cv": 0.01166579320880877,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "softmax-perf-hidden-wide",
+        "task_id": "online_softmax",
+        "visibility": "hidden",
+        "parameters": {
+          "rows": 32,
+          "cols": 8192,
+          "dtype": "bfloat16"
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "triton_audited",
+        "median_us": 13.358400017023087,
+        "p10_us": 13.206399977207184,
+        "p90_us": 13.649600744247437,
+        "cv": 0.021221391629487225,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "softmax-perf-hidden-wide",
+        "task_id": "online_softmax",
+        "visibility": "hidden",
+        "parameters": {
+          "rows": 32,
+          "cols": 8192,
+          "dtype": "bfloat16"
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 20.470400154590607,
+        "p10_us": 20.243200659751892,
+        "p90_us": 20.88319957256317,
+        "cv": 0.027251905024077948,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "scaled-rms-perf-public",
+        "task_id": "hpc_rmsnorm_scale",
+        "visibility": "public",
+        "parameters": {
+          "tokens": 16,
+          "hidden": 5120,
+          "scale": 2.5
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "flashinfer_fused",
+        "median_us": 11.237600073218346,
+        "p10_us": 11.105599999427795,
+        "p90_us": 11.537600308656693,
+        "cv": 0.018781594816556835,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "scaled-rms-perf-public",
+        "task_id": "hpc_rmsnorm_scale",
+        "visibility": "public",
+        "parameters": {
+          "tokens": 16,
+          "hidden": 5120,
+          "scale": 2.5
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 86.14560067653656,
+        "p10_us": 82.31040239334106,
+        "p90_us": 87.74880170822144,
+        "cv": 0.07055456263155531,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "scaled-rms-perf-hidden",
+        "task_id": "hpc_rmsnorm_scale",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 17,
+          "hidden": 4096,
+          "scale": 0.125
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "flashinfer_fused",
+        "median_us": 11.301599815487862,
+        "p10_us": 11.20000034570694,
+        "p90_us": 11.7296002805233,
+        "cv": 0.02143311296509617,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "scaled-rms-perf-hidden",
+        "task_id": "hpc_rmsnorm_scale",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 17,
+          "hidden": 4096,
+          "scale": 0.125
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "full_operator",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 83.26320052146912,
+        "p10_us": 82.3632001876831,
+        "p90_us": 85.18400192260742,
+        "cv": 0.013282209468010826,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    }
+  ]
+}

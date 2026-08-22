@@ -1,0 +1,1013 @@
+{
+  "schema_version": "1.0",
+  "samples": [
+    {
+      "sample_id": "controlled-rmsnorm-spec-1",
+      "task_id": "rmsnorm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SPEC",
+        "variant": 1
+      },
+      "expected_step": "S2",
+      "expected_error_type": "SPEC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-rmsnorm-spec-2",
+      "task_id": "rmsnorm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SPEC",
+        "variant": 2
+      },
+      "expected_step": "S3",
+      "expected_error_type": "SPEC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-rmsnorm-algo-1",
+      "task_id": "rmsnorm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "ALGO",
+        "variant": 1
+      },
+      "expected_step": "S3",
+      "expected_error_type": "ALGO",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-rmsnorm-algo-2",
+      "task_id": "rmsnorm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "ALGO",
+        "variant": 2
+      },
+      "expected_step": "S4",
+      "expected_error_type": "ALGO",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-rmsnorm-num-1",
+      "task_id": "rmsnorm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "NUM",
+        "variant": 1
+      },
+      "expected_step": "S4",
+      "expected_error_type": "NUM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-rmsnorm-num-2",
+      "task_id": "rmsnorm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "NUM",
+        "variant": 2
+      },
+      "expected_step": "S1",
+      "expected_error_type": "NUM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-rmsnorm-mem-1",
+      "task_id": "rmsnorm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "MEM",
+        "variant": 1
+      },
+      "expected_step": "S1",
+      "expected_error_type": "MEM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-rmsnorm-mem-2",
+      "task_id": "rmsnorm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "MEM",
+        "variant": 2
+      },
+      "expected_step": "S2",
+      "expected_error_type": "MEM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-rmsnorm-sync-1",
+      "task_id": "rmsnorm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SYNC",
+        "variant": 1
+      },
+      "expected_step": "S2",
+      "expected_error_type": "SYNC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-rmsnorm-sync-2",
+      "task_id": "rmsnorm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SYNC",
+        "variant": 2
+      },
+      "expected_step": "S3",
+      "expected_error_type": "SYNC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-rmsnorm-impl-1",
+      "task_id": "rmsnorm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "IMPL",
+        "variant": 1
+      },
+      "expected_step": "S3",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-rmsnorm-impl-2",
+      "task_id": "rmsnorm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "IMPL",
+        "variant": 2
+      },
+      "expected_step": "S4",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-merge_state-spec-1",
+      "task_id": "merge_state",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SPEC",
+        "variant": 1
+      },
+      "expected_step": "S2",
+      "expected_error_type": "SPEC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-merge_state-spec-2",
+      "task_id": "merge_state",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SPEC",
+        "variant": 2
+      },
+      "expected_step": "S3",
+      "expected_error_type": "SPEC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-merge_state-algo-1",
+      "task_id": "merge_state",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "ALGO",
+        "variant": 1
+      },
+      "expected_step": "S3",
+      "expected_error_type": "ALGO",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-merge_state-algo-2",
+      "task_id": "merge_state",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "ALGO",
+        "variant": 2
+      },
+      "expected_step": "S4",
+      "expected_error_type": "ALGO",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-merge_state-num-1",
+      "task_id": "merge_state",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "NUM",
+        "variant": 1
+      },
+      "expected_step": "S4",
+      "expected_error_type": "NUM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-merge_state-num-2",
+      "task_id": "merge_state",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "NUM",
+        "variant": 2
+      },
+      "expected_step": "S1",
+      "expected_error_type": "NUM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-merge_state-mem-1",
+      "task_id": "merge_state",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "MEM",
+        "variant": 1
+      },
+      "expected_step": "S1",
+      "expected_error_type": "MEM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-merge_state-mem-2",
+      "task_id": "merge_state",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "MEM",
+        "variant": 2
+      },
+      "expected_step": "S2",
+      "expected_error_type": "MEM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-merge_state-sync-1",
+      "task_id": "merge_state",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SYNC",
+        "variant": 1
+      },
+      "expected_step": "S2",
+      "expected_error_type": "SYNC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-merge_state-sync-2",
+      "task_id": "merge_state",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SYNC",
+        "variant": 2
+      },
+      "expected_step": "S3",
+      "expected_error_type": "SYNC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-merge_state-impl-1",
+      "task_id": "merge_state",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "IMPL",
+        "variant": 1
+      },
+      "expected_step": "S3",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-merge_state-impl-2",
+      "task_id": "merge_state",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "IMPL",
+        "variant": 2
+      },
+      "expected_step": "S4",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-sampling-spec-1",
+      "task_id": "sampling",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SPEC",
+        "variant": 1
+      },
+      "expected_step": "S2",
+      "expected_error_type": "SPEC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-sampling-spec-2",
+      "task_id": "sampling",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SPEC",
+        "variant": 2
+      },
+      "expected_step": "S3",
+      "expected_error_type": "SPEC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-sampling-algo-1",
+      "task_id": "sampling",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "ALGO",
+        "variant": 1
+      },
+      "expected_step": "S3",
+      "expected_error_type": "ALGO",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-sampling-algo-2",
+      "task_id": "sampling",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "ALGO",
+        "variant": 2
+      },
+      "expected_step": "S4",
+      "expected_error_type": "ALGO",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-sampling-num-1",
+      "task_id": "sampling",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "NUM",
+        "variant": 1
+      },
+      "expected_step": "S4",
+      "expected_error_type": "NUM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-sampling-num-2",
+      "task_id": "sampling",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "NUM",
+        "variant": 2
+      },
+      "expected_step": "S1",
+      "expected_error_type": "NUM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-sampling-mem-1",
+      "task_id": "sampling",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "MEM",
+        "variant": 1
+      },
+      "expected_step": "S1",
+      "expected_error_type": "MEM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-sampling-mem-2",
+      "task_id": "sampling",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "MEM",
+        "variant": 2
+      },
+      "expected_step": "S2",
+      "expected_error_type": "MEM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-sampling-sync-1",
+      "task_id": "sampling",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SYNC",
+        "variant": 1
+      },
+      "expected_step": "S2",
+      "expected_error_type": "SYNC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-sampling-sync-2",
+      "task_id": "sampling",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SYNC",
+        "variant": 2
+      },
+      "expected_step": "S3",
+      "expected_error_type": "SYNC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-sampling-impl-1",
+      "task_id": "sampling",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "IMPL",
+        "variant": 1
+      },
+      "expected_step": "S3",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-sampling-impl-2",
+      "task_id": "sampling",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "IMPL",
+        "variant": 2
+      },
+      "expected_step": "S4",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-online_softmax-spec-1",
+      "task_id": "online_softmax",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SPEC",
+        "variant": 1
+      },
+      "expected_step": "S2",
+      "expected_error_type": "SPEC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-online_softmax-spec-2",
+      "task_id": "online_softmax",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SPEC",
+        "variant": 2
+      },
+      "expected_step": "S3",
+      "expected_error_type": "SPEC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-online_softmax-algo-1",
+      "task_id": "online_softmax",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "ALGO",
+        "variant": 1
+      },
+      "expected_step": "S3",
+      "expected_error_type": "ALGO",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-online_softmax-algo-2",
+      "task_id": "online_softmax",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "ALGO",
+        "variant": 2
+      },
+      "expected_step": "S4",
+      "expected_error_type": "ALGO",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-online_softmax-num-1",
+      "task_id": "online_softmax",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "NUM",
+        "variant": 1
+      },
+      "expected_step": "S4",
+      "expected_error_type": "NUM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-online_softmax-num-2",
+      "task_id": "online_softmax",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "NUM",
+        "variant": 2
+      },
+      "expected_step": "S1",
+      "expected_error_type": "NUM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-online_softmax-mem-1",
+      "task_id": "online_softmax",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "MEM",
+        "variant": 1
+      },
+      "expected_step": "S1",
+      "expected_error_type": "MEM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-online_softmax-mem-2",
+      "task_id": "online_softmax",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "MEM",
+        "variant": 2
+      },
+      "expected_step": "S2",
+      "expected_error_type": "MEM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-online_softmax-sync-1",
+      "task_id": "online_softmax",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SYNC",
+        "variant": 1
+      },
+      "expected_step": "S2",
+      "expected_error_type": "SYNC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-online_softmax-sync-2",
+      "task_id": "online_softmax",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SYNC",
+        "variant": 2
+      },
+      "expected_step": "S3",
+      "expected_error_type": "SYNC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-online_softmax-impl-1",
+      "task_id": "online_softmax",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "IMPL",
+        "variant": 1
+      },
+      "expected_step": "S3",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-online_softmax-impl-2",
+      "task_id": "online_softmax",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "IMPL",
+        "variant": 2
+      },
+      "expected_step": "S4",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_rmsnorm_scale-spec-1",
+      "task_id": "hpc_rmsnorm_scale",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SPEC",
+        "variant": 1
+      },
+      "expected_step": "S2",
+      "expected_error_type": "SPEC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_rmsnorm_scale-spec-2",
+      "task_id": "hpc_rmsnorm_scale",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SPEC",
+        "variant": 2
+      },
+      "expected_step": "S3",
+      "expected_error_type": "SPEC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_rmsnorm_scale-algo-1",
+      "task_id": "hpc_rmsnorm_scale",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "ALGO",
+        "variant": 1
+      },
+      "expected_step": "S3",
+      "expected_error_type": "ALGO",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_rmsnorm_scale-algo-2",
+      "task_id": "hpc_rmsnorm_scale",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "ALGO",
+        "variant": 2
+      },
+      "expected_step": "S4",
+      "expected_error_type": "ALGO",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_rmsnorm_scale-num-1",
+      "task_id": "hpc_rmsnorm_scale",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "NUM",
+        "variant": 1
+      },
+      "expected_step": "S4",
+      "expected_error_type": "NUM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_rmsnorm_scale-num-2",
+      "task_id": "hpc_rmsnorm_scale",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "NUM",
+        "variant": 2
+      },
+      "expected_step": "S1",
+      "expected_error_type": "NUM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_rmsnorm_scale-mem-1",
+      "task_id": "hpc_rmsnorm_scale",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "MEM",
+        "variant": 1
+      },
+      "expected_step": "S1",
+      "expected_error_type": "MEM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_rmsnorm_scale-mem-2",
+      "task_id": "hpc_rmsnorm_scale",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "MEM",
+        "variant": 2
+      },
+      "expected_step": "S2",
+      "expected_error_type": "MEM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_rmsnorm_scale-sync-1",
+      "task_id": "hpc_rmsnorm_scale",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SYNC",
+        "variant": 1
+      },
+      "expected_step": "S2",
+      "expected_error_type": "SYNC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_rmsnorm_scale-sync-2",
+      "task_id": "hpc_rmsnorm_scale",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SYNC",
+        "variant": 2
+      },
+      "expected_step": "S3",
+      "expected_error_type": "SYNC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_rmsnorm_scale-impl-1",
+      "task_id": "hpc_rmsnorm_scale",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "IMPL",
+        "variant": 1
+      },
+      "expected_step": "S3",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_rmsnorm_scale-impl-2",
+      "task_id": "hpc_rmsnorm_scale",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "IMPL",
+        "variant": 2
+      },
+      "expected_step": "S4",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_route_gemm-spec-1",
+      "task_id": "hpc_route_gemm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SPEC",
+        "variant": 1
+      },
+      "expected_step": "S2",
+      "expected_error_type": "SPEC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_route_gemm-spec-2",
+      "task_id": "hpc_route_gemm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SPEC",
+        "variant": 2
+      },
+      "expected_step": "S3",
+      "expected_error_type": "SPEC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_route_gemm-algo-1",
+      "task_id": "hpc_route_gemm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "ALGO",
+        "variant": 1
+      },
+      "expected_step": "S3",
+      "expected_error_type": "ALGO",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_route_gemm-algo-2",
+      "task_id": "hpc_route_gemm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "ALGO",
+        "variant": 2
+      },
+      "expected_step": "S4",
+      "expected_error_type": "ALGO",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_route_gemm-num-1",
+      "task_id": "hpc_route_gemm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "NUM",
+        "variant": 1
+      },
+      "expected_step": "S4",
+      "expected_error_type": "NUM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_route_gemm-num-2",
+      "task_id": "hpc_route_gemm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "NUM",
+        "variant": 2
+      },
+      "expected_step": "S1",
+      "expected_error_type": "NUM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_route_gemm-mem-1",
+      "task_id": "hpc_route_gemm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "MEM",
+        "variant": 1
+      },
+      "expected_step": "S1",
+      "expected_error_type": "MEM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_route_gemm-mem-2",
+      "task_id": "hpc_route_gemm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "MEM",
+        "variant": 2
+      },
+      "expected_step": "S2",
+      "expected_error_type": "MEM",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_route_gemm-sync-1",
+      "task_id": "hpc_route_gemm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SYNC",
+        "variant": 1
+      },
+      "expected_step": "S2",
+      "expected_error_type": "SYNC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_route_gemm-sync-2",
+      "task_id": "hpc_route_gemm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "SYNC",
+        "variant": 2
+      },
+      "expected_step": "S3",
+      "expected_error_type": "SYNC",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_route_gemm-impl-1",
+      "task_id": "hpc_route_gemm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "IMPL",
+        "variant": 1
+      },
+      "expected_step": "S3",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    },
+    {
+      "sample_id": "controlled-hpc_route_gemm-impl-2",
+      "task_id": "hpc_route_gemm",
+      "kind": "controlled_error",
+      "mutation": {
+        "type": "IMPL",
+        "variant": 2
+      },
+      "expected_step": "S4",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": false,
+      "process_valid": false,
+      "annotation_source": "known_injected_mutation"
+    }
+  ]
+}

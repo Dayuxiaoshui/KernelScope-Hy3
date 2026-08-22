@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0",
+  "environment": {
+    "cuda_available": true,
+    "device_index": 0,
+    "device_name": "NVIDIA H200",
+    "compute_capability": [
+      9,
+      0
+    ],
+    "total_memory_bytes": 150111977472,
+    "torch_version": "2.11.0+cu130",
+    "torch_cuda_version": "13.0"
+  },
+  "protocol": {
+    "warmup": 30,
+    "iterations": 60,
+    "launches_per_sample": 10
+  },
+  "records": [
+    {
+      "case": {
+        "case_id": "route-perf-public",
+        "task_id": "hpc_route_gemm",
+        "visibility": "public",
+        "parameters": {
+          "m": 128,
+          "k": 4096,
+          "n": 256
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "measurement": {
+        "provider": "hpc_ops_native",
+        "median_us": 15.97440019249916,
+        "p10_us": 15.695999562740326,
+        "p90_us": 16.767999529838562,
+        "cv": 0.03001467536173877,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "route-perf-public",
+        "task_id": "hpc_route_gemm",
+        "visibility": "public",
+        "parameters": {
+          "m": 128,
+          "k": 4096,
+          "n": 256
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 25.18399953842163,
+        "p10_us": 24.70400035381317,
+        "p90_us": 25.79520046710968,
+        "cv": 0.0245234872313179,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "route-perf-hidden-small-m",
+        "task_id": "hpc_route_gemm",
+        "visibility": "hidden",
+        "parameters": {
+          "m": 8,
+          "k": 4096,
+          "n": 256
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "measurement": {
+        "provider": "hpc_ops_native",
+        "median_us": 15.856000036001205,
+        "p10_us": 15.55200070142746,
+        "p90_us": 16.582399606704712,
+        "cv": 0.023564715191104948,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "route-perf-hidden-small-m",
+        "task_id": "hpc_route_gemm",
+        "visibility": "hidden",
+        "parameters": {
+          "m": 8,
+          "k": 4096,
+          "n": 256
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 24.636799842119217,
+        "p10_us": 24.502399563789368,
+        "p90_us": 25.190401077270508,
+        "cv": 0.01229712296944942,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    }
+  ]
+}

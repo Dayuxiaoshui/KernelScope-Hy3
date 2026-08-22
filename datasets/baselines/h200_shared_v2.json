@@ -1,0 +1,383 @@
+{
+  "schema_version": "1.0",
+  "environment": {
+    "cuda_available": true,
+    "device_index": 0,
+    "device_name": "NVIDIA H200",
+    "compute_capability": [
+      9,
+      0
+    ],
+    "total_memory_bytes": 150111977472,
+    "torch_version": "2.11.0+cu130",
+    "torch_cuda_version": "13.0"
+  },
+  "protocol": {
+    "warmup": 50,
+    "iterations": 100,
+    "launches_per_sample": 20
+  },
+  "records": [
+    {
+      "case": {
+        "case_id": "rms-perf-public-1",
+        "task_id": "rmsnorm",
+        "visibility": "public",
+        "parameters": {
+          "tokens": 32,
+          "hidden": 4096,
+          "dtype": "bfloat16"
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 7.53679983317852,
+        "p10_us": 7.348799705505371,
+        "p90_us": 7.887999713420868,
+        "cv": 0.06954924697128653,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "rms-perf-public-1",
+        "task_id": "rmsnorm",
+        "visibility": "public",
+        "parameters": {
+          "tokens": 32,
+          "hidden": 4096,
+          "dtype": "bfloat16"
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "measurement": {
+        "provider": "flashinfer",
+        "median_us": 7.337599992752075,
+        "p10_us": 7.262399792671204,
+        "p90_us": 7.630400359630585,
+        "cv": 0.03147844681393374,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "rms-perf-public-1",
+        "task_id": "rmsnorm",
+        "visibility": "public",
+        "parameters": {
+          "tokens": 32,
+          "hidden": 4096,
+          "dtype": "bfloat16"
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 68.60879957675934,
+        "p10_us": 67.99520254135132,
+        "p90_us": 70.39999961853027,
+        "cv": 0.03315120536243762,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "rms-perf-hidden-1",
+        "task_id": "rmsnorm",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 89,
+          "hidden": 4096,
+          "dtype": "bfloat16"
+        },
+        "weight": 1.5,
+        "tags": [
+          "production"
+        ]
+      },
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 7.395199686288834,
+        "p10_us": 7.302399724721909,
+        "p90_us": 7.635200023651123,
+        "cv": 0.02383657173563986,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "rms-perf-hidden-1",
+        "task_id": "rmsnorm",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 89,
+          "hidden": 4096,
+          "dtype": "bfloat16"
+        },
+        "weight": 1.5,
+        "tags": [
+          "production"
+        ]
+      },
+      "measurement": {
+        "provider": "flashinfer",
+        "median_us": 7.355999946594238,
+        "p10_us": 7.252799719572067,
+        "p90_us": 7.5839996337890625,
+        "cv": 0.027953451398810034,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "rms-perf-hidden-1",
+        "task_id": "rmsnorm",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 89,
+          "hidden": 4096,
+          "dtype": "bfloat16"
+        },
+        "weight": 1.5,
+        "tags": [
+          "production"
+        ]
+      },
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 68.36720108985901,
+        "p10_us": 67.78079867362976,
+        "p90_us": 69.68960165977478,
+        "cv": 0.06555717562691812,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "rms-perf-hidden-tail",
+        "task_id": "rmsnorm",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 19,
+          "hidden": 3584,
+          "dtype": "float16"
+        },
+        "weight": 1.2,
+        "tags": [
+          "nonstandard"
+        ]
+      },
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 7.3632001876831055,
+        "p10_us": 7.257600128650665,
+        "p90_us": 7.680000364780426,
+        "cv": 0.07477735814325365,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "rms-perf-hidden-tail",
+        "task_id": "rmsnorm",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 19,
+          "hidden": 3584,
+          "dtype": "float16"
+        },
+        "weight": 1.2,
+        "tags": [
+          "nonstandard"
+        ]
+      },
+      "measurement": {
+        "provider": "flashinfer",
+        "median_us": 7.337599992752075,
+        "p10_us": 7.240000367164612,
+        "p90_us": 7.742399722337723,
+        "cv": 0.18095127725281399,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "rms-perf-hidden-tail",
+        "task_id": "rmsnorm",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 19,
+          "hidden": 3584,
+          "dtype": "float16"
+        },
+        "weight": 1.2,
+        "tags": [
+          "nonstandard"
+        ]
+      },
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 68.97680163383484,
+        "p10_us": 68.38080286979675,
+        "p90_us": 69.9455976486206,
+        "cv": 0.009360442996994877,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "merge-perf-public-1",
+        "task_id": "merge_state",
+        "visibility": "public",
+        "parameters": {
+          "tokens": 512,
+          "heads": 16,
+          "head_size": 64
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 7.976000010967255,
+        "p10_us": 7.90880024433136,
+        "p90_us": 8.214399963617325,
+        "cv": 0.02691747181023893,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "merge-perf-public-1",
+        "task_id": "merge_state",
+        "visibility": "public",
+        "parameters": {
+          "tokens": 512,
+          "heads": 16,
+          "head_size": 64
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 208.8703989982605,
+        "p10_us": 207.5648069381714,
+        "p90_us": 212.8159999847412,
+        "cv": 0.014798159970934255,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "merge-perf-hidden-tail",
+        "task_id": "merge_state",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 613,
+          "heads": 32,
+          "head_size": 48
+        },
+        "weight": 1.5,
+        "tags": [
+          "tail"
+        ]
+      },
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 7.979999855160713,
+        "p10_us": 7.887999713420868,
+        "p90_us": 8.36160033941269,
+        "cv": 0.03667667585050724,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "merge-perf-hidden-tail",
+        "task_id": "merge_state",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 613,
+          "heads": 32,
+          "head_size": 48
+        },
+        "weight": 1.5,
+        "tags": [
+          "tail"
+        ]
+      },
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 209.9992036819458,
+        "p10_us": 208.28320980072021,
+        "p90_us": 217.35200881958008,
+        "cv": 0.017530823197924313,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "merge-perf-hidden-large",
+        "task_id": "merge_state",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 1536,
+          "heads": 32,
+          "head_size": 128
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 8.224799856543541,
+        "p10_us": 8.108799904584885,
+        "p90_us": 8.398400247097015,
+        "cv": 0.019465655495912868,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "merge-perf-hidden-large",
+        "task_id": "merge_state",
+        "visibility": "hidden",
+        "parameters": {
+          "tokens": 1536,
+          "heads": 32,
+          "head_size": 128
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 210.7751965522766,
+        "p10_us": 209.50560569763184,
+        "p90_us": 213.09120655059814,
+        "cv": 0.010912180215456467,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    }
+  ]
+}

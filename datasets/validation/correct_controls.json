@@ -1,0 +1,185 @@
+{
+  "schema_version": "1.0",
+  "samples": [
+    {
+      "sample_id": "correct-reference-rmsnorm",
+      "task_id": "rmsnorm",
+      "kind": "correct_reference",
+      "expected_step": null,
+      "expected_error_type": null,
+      "final_answer_correct": true,
+      "process_valid": true,
+      "annotation_source": "oracle_and_review"
+    },
+    {
+      "sample_id": "correct-naive-rmsnorm",
+      "task_id": "rmsnorm",
+      "kind": "correct_naive",
+      "expected_step": null,
+      "expected_error_type": null,
+      "final_answer_correct": true,
+      "process_valid": true,
+      "annotation_source": "oracle_and_review"
+    },
+    {
+      "sample_id": "false-process-rmsnorm",
+      "task_id": "rmsnorm",
+      "kind": "correct_result_invalid_process",
+      "expected_step": "S2",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": true,
+      "process_valid": false,
+      "annotation_source": "adversarial_constructed"
+    },
+    {
+      "sample_id": "correct-reference-merge_state",
+      "task_id": "merge_state",
+      "kind": "correct_reference",
+      "expected_step": null,
+      "expected_error_type": null,
+      "final_answer_correct": true,
+      "process_valid": true,
+      "annotation_source": "oracle_and_review"
+    },
+    {
+      "sample_id": "correct-naive-merge_state",
+      "task_id": "merge_state",
+      "kind": "correct_naive",
+      "expected_step": null,
+      "expected_error_type": null,
+      "final_answer_correct": true,
+      "process_valid": true,
+      "annotation_source": "oracle_and_review"
+    },
+    {
+      "sample_id": "false-process-merge_state",
+      "task_id": "merge_state",
+      "kind": "correct_result_invalid_process",
+      "expected_step": "S2",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": true,
+      "process_valid": false,
+      "annotation_source": "adversarial_constructed"
+    },
+    {
+      "sample_id": "correct-reference-sampling",
+      "task_id": "sampling",
+      "kind": "correct_reference",
+      "expected_step": null,
+      "expected_error_type": null,
+      "final_answer_correct": true,
+      "process_valid": true,
+      "annotation_source": "oracle_and_review"
+    },
+    {
+      "sample_id": "correct-naive-sampling",
+      "task_id": "sampling",
+      "kind": "correct_naive",
+      "expected_step": null,
+      "expected_error_type": null,
+      "final_answer_correct": true,
+      "process_valid": true,
+      "annotation_source": "oracle_and_review"
+    },
+    {
+      "sample_id": "false-process-sampling",
+      "task_id": "sampling",
+      "kind": "correct_result_invalid_process",
+      "expected_step": "S2",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": true,
+      "process_valid": false,
+      "annotation_source": "adversarial_constructed"
+    },
+    {
+      "sample_id": "correct-reference-online_softmax",
+      "task_id": "online_softmax",
+      "kind": "correct_reference",
+      "expected_step": null,
+      "expected_error_type": null,
+      "final_answer_correct": true,
+      "process_valid": true,
+      "annotation_source": "oracle_and_review"
+    },
+    {
+      "sample_id": "correct-naive-online_softmax",
+      "task_id": "online_softmax",
+      "kind": "correct_naive",
+      "expected_step": null,
+      "expected_error_type": null,
+      "final_answer_correct": true,
+      "process_valid": true,
+      "annotation_source": "oracle_and_review"
+    },
+    {
+      "sample_id": "false-process-online_softmax",
+      "task_id": "online_softmax",
+      "kind": "correct_result_invalid_process",
+      "expected_step": "S2",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": true,
+      "process_valid": false,
+      "annotation_source": "adversarial_constructed"
+    },
+    {
+      "sample_id": "correct-reference-hpc_rmsnorm_scale",
+      "task_id": "hpc_rmsnorm_scale",
+      "kind": "correct_reference",
+      "expected_step": null,
+      "expected_error_type": null,
+      "final_answer_correct": true,
+      "process_valid": true,
+      "annotation_source": "oracle_and_review"
+    },
+    {
+      "sample_id": "correct-naive-hpc_rmsnorm_scale",
+      "task_id": "hpc_rmsnorm_scale",
+      "kind": "correct_naive",
+      "expected_step": null,
+      "expected_error_type": null,
+      "final_answer_correct": true,
+      "process_valid": true,
+      "annotation_source": "oracle_and_review"
+    },
+    {
+      "sample_id": "false-process-hpc_rmsnorm_scale",
+      "task_id": "hpc_rmsnorm_scale",
+      "kind": "correct_result_invalid_process",
+      "expected_step": "S2",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": true,
+      "process_valid": false,
+      "annotation_source": "adversarial_constructed"
+    },
+    {
+      "sample_id": "correct-reference-hpc_route_gemm",
+      "task_id": "hpc_route_gemm",
+      "kind": "correct_reference",
+      "expected_step": null,
+      "expected_error_type": null,
+      "final_answer_correct": true,
+      "process_valid": true,
+      "annotation_source": "oracle_and_review"
+    },
+    {
+      "sample_id": "correct-naive-hpc_route_gemm",
+      "task_id": "hpc_route_gemm",
+      "kind": "correct_naive",
+      "expected_step": null,
+      "expected_error_type": null,
+      "final_answer_correct": true,
+      "process_valid": true,
+      "annotation_source": "oracle_and_review"
+    },
+    {
+      "sample_id": "false-process-hpc_route_gemm",
+      "task_id": "hpc_route_gemm",
+      "kind": "correct_result_invalid_process",
+      "expected_step": "S2",
+      "expected_error_type": "IMPL",
+      "final_answer_correct": true,
+      "process_valid": false,
+      "annotation_source": "adversarial_constructed"
+    }
+  ]
+}

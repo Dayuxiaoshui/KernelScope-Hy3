@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "environment": {
+    "cuda_available": true,
+    "device_index": 0,
+    "device_name": "NVIDIA H200",
+    "compute_capability": [
+      9,
+      0
+    ],
+    "total_memory_bytes": 150111977472,
+    "torch_version": "2.11.0+cu130",
+    "torch_cuda_version": "13.0"
+  },
+  "protocol": {
+    "warmup": 50,
+    "iterations": 100,
+    "launches_per_sample": 20
+  },
+  "records": [
+    {
+      "case": {
+        "case_id": "sampling-perf-public-topk",
+        "task_id": "sampling",
+        "visibility": "public",
+        "parameters": {
+          "batch": 32,
+          "vocab": 32000,
+          "top_k": 100
+        },
+        "weight": 1.0,
+        "tags": [
+          "top_k"
+        ]
+      },
+      "scope": "filtering_only",
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 24.12640005350113,
+        "p10_us": 24.102400243282318,
+        "p90_us": 24.167999625205994,
+        "cv": 0.16890424604997373,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "sampling-perf-public-topk",
+        "task_id": "sampling",
+        "visibility": "public",
+        "parameters": {
+          "batch": 32,
+          "vocab": 32000,
+          "top_k": 100
+        },
+        "weight": 1.0,
+        "tags": [
+          "top_k"
+        ]
+      },
+      "scope": "filtering_only",
+      "measurement": {
+        "provider": "flashinfer",
+        "median_us": 24.108800292015076,
+        "p10_us": 24.065600335597992,
+        "p90_us": 24.14879947900772,
+        "cv": 0.0015883726325594805,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "sampling-perf-hidden-topp",
+        "task_id": "sampling",
+        "visibility": "hidden",
+        "parameters": {
+          "batch": 99,
+          "vocab": 128256,
+          "top_p": 0.5
+        },
+        "weight": 1.5,
+        "tags": [
+          "top_p"
+        ]
+      },
+      "scope": "filtering_only",
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 214.137601852417,
+        "p10_us": 213.8672113418579,
+        "p90_us": 214.45119380950928,
+        "cv": 0.006397544602876625,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "sampling-perf-hidden-topp",
+        "task_id": "sampling",
+        "visibility": "hidden",
+        "parameters": {
+          "batch": 99,
+          "vocab": 128256,
+          "top_p": 0.5
+        },
+        "weight": 1.5,
+        "tags": [
+          "top_p"
+        ]
+      },
+      "scope": "filtering_only",
+      "measurement": {
+        "provider": "flashinfer",
+        "median_us": 260.4103922843933,
+        "p10_us": 260.097599029541,
+        "p90_us": 260.75520515441895,
+        "cv": 0.0009422584071469924,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "sampling-perf-hidden-small",
+        "task_id": "sampling",
+        "visibility": "hidden",
+        "parameters": {
+          "batch": 1,
+          "vocab": 111,
+          "top_k": 10
+        },
+        "weight": 1.2,
+        "tags": [
+          "top_k",
+          "tail"
+        ]
+      },
+      "scope": "filtering_only",
+      "measurement": {
+        "provider": "sglang",
+        "median_us": 11.30320020020008,
+        "p10_us": 11.177600175142288,
+        "p90_us": 11.59999966621399,
+        "cv": 0.0235730621438673,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    },
+    {
+      "case": {
+        "case_id": "sampling-perf-hidden-small",
+        "task_id": "sampling",
+        "visibility": "hidden",
+        "parameters": {
+          "batch": 1,
+          "vocab": 111,
+          "top_k": 10
+        },
+        "weight": 1.2,
+        "tags": [
+          "top_k",
+          "tail"
+        ]
+      },
+      "scope": "filtering_only",
+      "measurement": {
+        "provider": "flashinfer",
+        "median_us": 10.917599871754646,
+        "p10_us": 10.779199749231339,
+        "p90_us": 11.257600039243698,
+        "cv": 0.0282195226573691,
+        "workspace_bytes": 0,
+        "clean_environment": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "schema_version": "1.0",
+  "environment": {
+    "cuda_available": true,
+    "device_index": 0,
+    "device_name": "NVIDIA H200",
+    "compute_capability": [
+      9,
+      0
+    ],
+    "total_memory_bytes": 150111977472,
+    "torch_version": "2.11.0+cu130",
+    "torch_cuda_version": "13.0"
+  },
+  "protocol": {
+    "warmup": 50,
+    "iterations": 100,
+    "launches_per_sample": 1000
+  },
+  "records": [
+    {
+      "case": {
+        "case_id": "route-perf-public",
+        "task_id": "hpc_route_gemm",
+        "visibility": "public",
+        "parameters": {
+          "m": 128,
+          "k": 4096,
+          "n": 256
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "hpc_ops_native_padded",
+        "median_us": 17.748960494995117,
+        "p10_us": 16.929567337036133,
+        "p90_us": 18.29360008239746,
+        "cv": 0.04983069503575881,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "route-perf-public",
+        "task_id": "hpc_route_gemm",
+        "visibility": "public",
+        "parameters": {
+          "m": 128,
+          "k": 4096,
+          "n": 256
+        },
+        "weight": 1.0,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 23.27678394317627,
+        "p10_us": 23.201215744018555,
+        "p90_us": 23.45155143737793,
+        "cv": 0.021502563889842452,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "route-perf-hidden-small-m",
+        "task_id": "hpc_route_gemm",
+        "visibility": "hidden",
+        "parameters": {
+          "m": 8,
+          "k": 4096,
+          "n": 256
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "hpc_ops_native_padded",
+        "median_us": 17.17608070373535,
+        "p10_us": 17.117088317871094,
+        "p90_us": 17.26166343688965,
+        "cv": 0.030508385568138154,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "route-perf-hidden-small-m",
+        "task_id": "hpc_route_gemm",
+        "visibility": "hidden",
+        "parameters": {
+          "m": 8,
+          "k": 4096,
+          "n": 256
+        },
+        "weight": 1.5,
+        "tags": []
+      },
+      "scope": "native_hpc_ops",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 23.190896034240723,
+        "p10_us": 23.030431747436523,
+        "p90_us": 25.92051124572754,
+        "cv": 0.058289546800873726,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "route-perf-hidden-tail",
+        "task_id": "hpc_route_gemm",
+        "visibility": "hidden",
+        "parameters": {
+          "m": 33,
+          "k": 3584,
+          "n": 257
+        },
+        "weight": 1.5,
+        "tags": [
+          "tail"
+        ]
+      },
+      "scope": "native_hpc_ops",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "hpc_ops_native_padded",
+        "median_us": 17.899904251098633,
+        "p10_us": 17.81939125061035,
+        "p90_us": 18.005407333374023,
+        "cv": 0.0038664484892091933,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    },
+    {
+      "case": {
+        "case_id": "route-perf-hidden-tail",
+        "task_id": "hpc_route_gemm",
+        "visibility": "hidden",
+        "parameters": {
+          "m": 33,
+          "k": 3584,
+          "n": 257
+        },
+        "weight": 1.5,
+        "tags": [
+          "tail"
+        ]
+      },
+      "scope": "native_hpc_ops",
+      "correctness_gate": true,
+      "measurement": {
+        "provider": "torch_oracle",
+        "median_us": 23.316991806030273,
+        "p10_us": 23.144832611083984,
+        "p90_us": 24.995391845703125,
+        "cv": 0.04229526435604631,
+        "workspace_bytes": 0,
+        "clean_environment": true
+      }
+    }
+  ]
+}
