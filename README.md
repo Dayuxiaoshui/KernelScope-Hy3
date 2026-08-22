@@ -52,28 +52,28 @@ hy/
 
 ```mermaid
 flowchart TD
-    A[TaskSpec 算子需求] --> B[Hy3 Generator]
-    B --> C[Best-of-N 候选与结构化 JSON]
-    C --> D{Schema 校验}
-    D -- 失败 --> E[FORMAT 错误]
-    D -- 通过 --> F[步骤依赖与声明解析]
-    F --> G[Static Claim Analyzer]
+    A[TaskSpec] --> B[Hy3 Generator]
+    B --> C[Candidate JSON]
+    C --> D{Schema OK}
+    D -- No --> E[Format Error]
+    D -- Yes --> F[Process Claims]
+    F --> G[Static Analyzer]
     F --> H[Hy3 Judge]
-    F --> I[编译与执行适配器]
-    I --> J[Correctness Gate]
-    J -- 失败 --> K[定位最早失败步骤]
-    J -- 通过 --> L[Hidden / Metamorphic Tests]
-    L --> M[H200 CUDA Event 性能]
-    M --> N[Reference Envelope 与 Score]
+    F --> I[Compile and Run]
+    I --> J{Correctness OK}
+    J -- No --> K[Locate Error Step]
+    J -- Yes --> L[Hidden Tests]
+    L --> M[H200 Benchmark]
+    M --> N[Performance Score]
     G --> O[Evidence Aggregator]
     H --> O
     K --> O
     N --> O
-    O --> P[EvaluationResult]
-    P --> Q{Reward / 过程有效性}
-    Q -- 过程错误或性能不足 --> R[结构化反馈]
+    O --> P[Evaluation Result]
+    P --> Q{Reward OK}
+    Q -- No --> R[Feedback]
     R --> B
-    Q -- 通过 --> S[最终候选与实验报告]
+    Q -- Yes --> S[Final Report]
 ```
 
 图中的硬门禁顺序是：schema -> compile -> correctness -> hidden/metamorphic -> performance。性能快但 correctness 失败的候选 reward 为 0；结果正确但声明无法由代码或执行证据支撑的候选会被标记为 `correct_result_invalid_process`。
