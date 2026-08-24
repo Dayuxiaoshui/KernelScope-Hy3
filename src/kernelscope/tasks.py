@@ -38,6 +38,17 @@ _TESTS_READY = {
     "online_softmax",
     "hpc_rmsnorm_scale",
     "hpc_route_gemm",
+    "silu_mul",
+    "fused_add_rmsnorm",
+    "moe_topk_softmax",
+    "tiled_gemm_bias",
+    "per_token_group_quant",
+    "flashattention_small",
+    "paged_kv_gather",
+    "moe_align",
+    "hpc_rope_norm_store_kv",
+    "hpc_group_gemm_fp8",
+    "hpc_attention_decode",
 }
 TASKS = {
     task_id: replace(task, status="tests_ready") if task_id in _TESTS_READY else task

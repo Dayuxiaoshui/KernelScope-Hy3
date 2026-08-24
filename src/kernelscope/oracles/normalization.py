@@ -29,3 +29,10 @@ def rmsnorm_with_scale(
         raise ValueError(f"expected {expected_scales} scale value(s)")
     quantized = tuple((normalized / value).to(torch.float8_e4m3fn) for value in scale_tensor)
     return (normalized, *quantized) if is_moe else quantized[0]
+
+
+def fused_add_rmsnorm(
+    x: torch.Tensor, residual: torch.Tensor, weight: torch.Tensor, eps: float = 1e-6
+) -> tuple[torch.Tensor, torch.Tensor]:
+    new_residual = x + residual
+    return rmsnorm(new_residual, weight, eps), new_residual

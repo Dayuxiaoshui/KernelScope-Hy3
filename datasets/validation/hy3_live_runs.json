@@ -1,0 +1,736 @@
+{
+  "schema_version": "1.0",
+  "samples": [
+    {
+      "sample_id": "hy3-live-rmsnorm-1787487193",
+      "task_id": "rmsnorm",
+      "kind": "hy3_live_run",
+      "model": "hy3",
+      "source": "run_hy3_generator",
+      "captured_at": "2026-08-23T12:13:13",
+      "process_valid": true,
+      "final_answer_correct": true,
+      "error_type": [],
+      "execution": {
+        "compile": "not_run",
+        "sanitizer": "not_run",
+        "public_tests": "passed",
+        "hidden_tests": "passed",
+        "metamorphic_tests": "not_run",
+        "performance": "not_evaluated",
+        "details": {}
+      },
+      "cases": [
+        {
+          "case_id": "rms-public-1024",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=0.002"
+        },
+        {
+          "case_id": "rms-hidden-111",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=0.002"
+        },
+        {
+          "case_id": "rms-hidden-bf16",
+          "passed": true,
+          "max_abs_error": 0.0078125,
+          "detail": "tolerance=0.02"
+        }
+      ]
+    },
+    {
+      "sample_id": "hy3-live-merge_state-1787487201",
+      "task_id": "merge_state",
+      "kind": "hy3_live_run",
+      "model": "hy3",
+      "source": "run_hy3_generator",
+      "captured_at": "2026-08-23T12:13:21",
+      "process_valid": true,
+      "final_answer_correct": false,
+      "error_type": [
+        "IMPL.shape_mismatch"
+      ],
+      "execution": {
+        "compile": "not_run",
+        "sanitizer": "not_run",
+        "public_tests": "failed",
+        "hidden_tests": "failed",
+        "metamorphic_tests": "not_run",
+        "performance": "not_evaluated",
+        "details": {}
+      },
+      "cases": [
+        {
+          "case_id": "merge-public",
+          "passed": false,
+          "max_abs_error": Infinity,
+          "detail": "RuntimeError: The size of tensor a (8) must match the size of tensor b (16) at non-singleton dimension 1"
+        },
+        {
+          "case_id": "merge-hidden-tail",
+          "passed": false,
+          "max_abs_error": Infinity,
+          "detail": "RuntimeError: The size of tensor a (3) must match the size of tensor b (13) at non-singleton dimension 1"
+        },
+        {
+          "case_id": "merge-hidden-inf",
+          "passed": false,
+          "max_abs_error": Infinity,
+          "detail": "RuntimeError: The size of tensor a (2) must match the size of tensor b (4) at non-singleton dimension 1"
+        }
+      ]
+    },
+    {
+      "sample_id": "hy3-live-sampling-1787487208",
+      "task_id": "sampling",
+      "kind": "hy3_live_run",
+      "model": "hy3",
+      "source": "run_hy3_generator",
+      "captured_at": "2026-08-23T12:13:28",
+      "process_valid": true,
+      "final_answer_correct": false,
+      "error_type": [
+        "SPEC.output_contract_violation",
+        "IMPL.shape_mismatch"
+      ],
+      "execution": {
+        "compile": "not_run",
+        "sanitizer": "not_run",
+        "public_tests": "failed",
+        "hidden_tests": "failed",
+        "metamorphic_tests": "not_run",
+        "performance": "not_evaluated",
+        "details": {}
+      },
+      "cases": [
+        {
+          "case_id": "sampling-topk",
+          "passed": false,
+          "max_abs_error": Infinity,
+          "detail": "tolerance=1e-06"
+        },
+        {
+          "case_id": "sampling-topp-tail",
+          "passed": false,
+          "max_abs_error": Infinity,
+          "detail": "RuntimeError: expand(torch.LongTensor{[2, 1]}, size=[220]): the number of sizes provided (1) must be greater or equal to the number of dimensions in the tensor (2)"
+        },
+        {
+          "case_id": "sampling-joint",
+          "passed": false,
+          "max_abs_error": Infinity,
+          "detail": "RuntimeError: expand(torch.LongTensor{[4, 1]}, size=[1003]): the number of sizes provided (1) must be greater or equal to the number of dimensions in the tensor (2)"
+        }
+      ]
+    },
+    {
+      "sample_id": "hy3-live-online_softmax-1787487215",
+      "task_id": "online_softmax",
+      "kind": "hy3_live_run",
+      "model": "hy3",
+      "source": "run_hy3_generator",
+      "captured_at": "2026-08-23T12:13:35",
+      "process_valid": true,
+      "final_answer_correct": true,
+      "error_type": [],
+      "execution": {
+        "compile": "not_run",
+        "sanitizer": "not_run",
+        "public_tests": "passed",
+        "hidden_tests": "passed",
+        "metamorphic_tests": "not_run",
+        "performance": "not_evaluated",
+        "details": {}
+      },
+      "cases": [
+        {
+          "case_id": "softmax-public",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=0.002"
+        },
+        {
+          "case_id": "softmax-hidden-tail",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=0.002"
+        },
+        {
+          "case_id": "softmax-hidden-mask",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=1e-05"
+        }
+      ]
+    },
+    {
+      "sample_id": "hy3-live-hpc_rmsnorm_scale-1787487221",
+      "task_id": "hpc_rmsnorm_scale",
+      "kind": "hy3_live_run",
+      "model": "hy3",
+      "source": "run_hy3_generator",
+      "captured_at": "2026-08-23T12:13:41",
+      "process_valid": true,
+      "final_answer_correct": true,
+      "error_type": [],
+      "execution": {
+        "compile": "not_run",
+        "sanitizer": "not_run",
+        "public_tests": "passed",
+        "hidden_tests": "passed",
+        "metamorphic_tests": "not_run",
+        "performance": "not_evaluated",
+        "details": {}
+      },
+      "cases": [
+        {
+          "case_id": "scaled-rms-public",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=0.15"
+        },
+        {
+          "case_id": "scaled-rms-hidden",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=0.15"
+        }
+      ]
+    },
+    {
+      "sample_id": "hy3-live-hpc_route_gemm-1787487228",
+      "task_id": "hpc_route_gemm",
+      "kind": "hy3_live_run",
+      "model": "hy3",
+      "source": "run_hy3_generator",
+      "captured_at": "2026-08-23T12:13:48",
+      "process_valid": true,
+      "final_answer_correct": false,
+      "error_type": [
+        "NUM.precision_residual"
+      ],
+      "execution": {
+        "compile": "not_run",
+        "sanitizer": "not_run",
+        "public_tests": "passed",
+        "hidden_tests": "failed",
+        "metamorphic_tests": "not_run",
+        "performance": "not_evaluated",
+        "details": {}
+      },
+      "cases": [
+        {
+          "case_id": "route-public",
+          "passed": true,
+          "max_abs_error": 7.62939453125e-06,
+          "detail": "tolerance=1e-05"
+        },
+        {
+          "case_id": "route-hidden-tail",
+          "passed": true,
+          "max_abs_error": 6.67572021484375e-06,
+          "detail": "tolerance=1e-05"
+        },
+        {
+          "case_id": "route-hidden-residual",
+          "passed": false,
+          "max_abs_error": 1.9073486328125e-05,
+          "detail": "tolerance=1e-05"
+        }
+      ]
+    },
+    {
+      "sample_id": "hy3-search-merge_state-1787487267",
+      "task_id": "merge_state",
+      "kind": "hy3_search_trace",
+      "model": "hy3",
+      "source": "search_hy3",
+      "captured_at": "2026-08-23T12:14:27",
+      "rounds": 1,
+      "best_reward": 0.533333,
+      "final_correctness_ok": true,
+      "trace": {
+        "task_id": "merge_state",
+        "rounds": [
+          [
+            {
+              "candidate_id": "merge_state-r1",
+              "compile_ok": true,
+              "correctness_ok": true,
+              "process_valid": false,
+              "performance_ratio": 0.0,
+              "boundary_coverage": 1.0,
+              "claim_consistency": 0.6666666666666666,
+              "details": {
+                "cases": [
+                  {
+                    "case_id": "merge-public",
+                    "passed": true,
+                    "max_abs_error": 4.76837158203125e-07,
+                    "detail": "tolerance=1e-05"
+                  },
+                  {
+                    "case_id": "merge-hidden-tail",
+                    "passed": true,
+                    "max_abs_error": 2.384185791015625e-07,
+                    "detail": "tolerance=1e-05"
+                  },
+                  {
+                    "case_id": "merge-hidden-inf",
+                    "passed": true,
+                    "max_abs_error": 2.384185791015625e-07,
+                    "detail": "tolerance=1e-05"
+                  }
+                ],
+                "error_type": [
+                  "IMPL.claim_not_implemented"
+                ]
+              },
+              "reward": 0.533333
+            }
+          ]
+        ],
+        "best_candidate_id": "merge_state-r1"
+      }
+    },
+    {
+      "sample_id": "hy3-search-sampling-1787487350",
+      "task_id": "sampling",
+      "kind": "hy3_search_trace",
+      "model": "hy3",
+      "source": "search_hy3",
+      "captured_at": "2026-08-23T12:15:50",
+      "rounds": 3,
+      "best_reward": 0.0,
+      "final_correctness_ok": false,
+      "trace": {
+        "task_id": "sampling",
+        "rounds": [
+          [
+            {
+              "candidate_id": "sampling-r1",
+              "compile_ok": true,
+              "correctness_ok": false,
+              "process_valid": true,
+              "performance_ratio": 0.0,
+              "boundary_coverage": 0.0,
+              "claim_consistency": 1.0,
+              "details": {
+                "cases": [
+                  {
+                    "case_id": "sampling-topk",
+                    "passed": false,
+                    "max_abs_error": Infinity,
+                    "detail": "tolerance=1e-06"
+                  },
+                  {
+                    "case_id": "sampling-topp-tail",
+                    "passed": false,
+                    "max_abs_error": Infinity,
+                    "detail": "tolerance=1e-06"
+                  },
+                  {
+                    "case_id": "sampling-joint",
+                    "passed": false,
+                    "max_abs_error": Infinity,
+                    "detail": "tolerance=1e-06"
+                  }
+                ],
+                "error_type": []
+              },
+              "reward": 0.0
+            }
+          ],
+          [
+            {
+              "candidate_id": "sampling-r2",
+              "compile_ok": true,
+              "correctness_ok": false,
+              "process_valid": true,
+              "performance_ratio": 0.0,
+              "boundary_coverage": 0.0,
+              "claim_consistency": 1.0,
+              "details": {
+                "cases": [
+                  {
+                    "case_id": "sampling-topk",
+                    "passed": false,
+                    "max_abs_error": Infinity,
+                    "detail": "tolerance=1e-06"
+                  },
+                  {
+                    "case_id": "sampling-topp-tail",
+                    "passed": false,
+                    "max_abs_error": Infinity,
+                    "detail": "tolerance=1e-06"
+                  },
+                  {
+                    "case_id": "sampling-joint",
+                    "passed": false,
+                    "max_abs_error": Infinity,
+                    "detail": "tolerance=1e-06"
+                  }
+                ],
+                "error_type": []
+              },
+              "reward": 0.0
+            }
+          ],
+          [
+            {
+              "candidate_id": "sampling-r3",
+              "compile_ok": true,
+              "correctness_ok": false,
+              "process_valid": true,
+              "performance_ratio": 0.0,
+              "boundary_coverage": 0.0,
+              "claim_consistency": 1.0,
+              "details": {
+                "cases": [
+                  {
+                    "case_id": "sampling-topk",
+                    "passed": false,
+                    "max_abs_error": Infinity,
+                    "detail": "tolerance=1e-06"
+                  },
+                  {
+                    "case_id": "sampling-topp-tail",
+                    "passed": false,
+                    "max_abs_error": Infinity,
+                    "detail": "tolerance=1e-06"
+                  },
+                  {
+                    "case_id": "sampling-joint",
+                    "passed": false,
+                    "max_abs_error": Infinity,
+                    "detail": "tolerance=1e-06"
+                  }
+                ],
+                "error_type": []
+              },
+              "reward": 0.0
+            }
+          ]
+        ],
+        "best_candidate_id": "sampling-r1"
+      }
+    },
+    {
+      "sample_id": "hy3-search-sampling-1787487631",
+      "task_id": "sampling",
+      "kind": "hy3_search_trace",
+      "model": "hy3",
+      "source": "search_hy3",
+      "captured_at": "2026-08-23T12:20:31",
+      "rounds": 3,
+      "best_reward": 0.0,
+      "final_correctness_ok": false,
+      "trace": {
+        "task_id": "sampling",
+        "rounds": [
+          [
+            {
+              "candidate_id": "sampling-r1",
+              "compile_ok": true,
+              "correctness_ok": false,
+              "process_valid": true,
+              "performance_ratio": 0.0,
+              "boundary_coverage": 0.0,
+              "claim_consistency": 1.0,
+              "details": {
+                "cases": [
+                  {
+                    "case_id": "sampling-topk",
+                    "passed": false,
+                    "max_abs_error": Infinity,
+                    "detail": "tolerance=1e-06"
+                  },
+                  {
+                    "case_id": "sampling-topp-tail",
+                    "passed": false,
+                    "max_abs_error": Infinity,
+                    "detail": "tolerance=1e-06"
+                  },
+                  {
+                    "case_id": "sampling-joint",
+                    "passed": false,
+                    "max_abs_error": Infinity,
+                    "detail": "tolerance=1e-06"
+                  }
+                ],
+                "error_type": [
+                  "SPEC.output_contract_violation"
+                ]
+              },
+              "reward": 0.0
+            }
+          ],
+          [
+            {
+              "candidate_id": "sampling-r2",
+              "compile_ok": true,
+              "correctness_ok": false,
+              "process_valid": true,
+              "performance_ratio": 0.0,
+              "boundary_coverage": 0.5,
+              "claim_consistency": 1.0,
+              "details": {
+                "cases": [
+                  {
+                    "case_id": "sampling-topk",
+                    "passed": true,
+                    "max_abs_error": 5.960464477539063e-08,
+                    "detail": "tolerance=1e-06"
+                  },
+                  {
+                    "case_id": "sampling-topp-tail",
+                    "passed": true,
+                    "max_abs_error": 0.0,
+                    "detail": "tolerance=1e-06"
+                  },
+                  {
+                    "case_id": "sampling-joint",
+                    "passed": false,
+                    "max_abs_error": 0.05351798236370087,
+                    "detail": "tolerance=1e-06"
+                  }
+                ],
+                "error_type": [
+                  "ALGO.result_mismatch"
+                ]
+              },
+              "reward": 0.0
+            }
+          ],
+          [
+            {
+              "candidate_id": "sampling-r3",
+              "compile_ok": true,
+              "correctness_ok": false,
+              "process_valid": true,
+              "performance_ratio": 0.0,
+              "boundary_coverage": 0.5,
+              "claim_consistency": 1.0,
+              "details": {
+                "cases": [
+                  {
+                    "case_id": "sampling-topk",
+                    "passed": true,
+                    "max_abs_error": 5.960464477539063e-08,
+                    "detail": "tolerance=1e-06"
+                  },
+                  {
+                    "case_id": "sampling-topp-tail",
+                    "passed": true,
+                    "max_abs_error": 0.0,
+                    "detail": "tolerance=1e-06"
+                  },
+                  {
+                    "case_id": "sampling-joint",
+                    "passed": false,
+                    "max_abs_error": 0.05351798236370087,
+                    "detail": "tolerance=1e-06"
+                  }
+                ],
+                "error_type": [
+                  "ALGO.result_mismatch"
+                ]
+              },
+              "reward": 0.0
+            }
+          ]
+        ],
+        "best_candidate_id": "sampling-r1"
+      }
+    },
+    {
+      "sample_id": "hy3-live-rmsnorm-1787489721",
+      "task_id": "rmsnorm",
+      "kind": "hy3_live_run",
+      "model": "hy3",
+      "source": "run_hy3_generator",
+      "captured_at": "2026-08-23T12:55:21",
+      "with_judge": true,
+      "process_valid": true,
+      "final_answer_correct": true,
+      "error_type": [],
+      "evidence": [
+        {
+          "source": "static_analysis",
+          "state": "verified",
+          "detail": "kernel contains evidence matching fp32_accumulator",
+          "step_id": "S1"
+        },
+        {
+          "source": "static_analysis",
+          "state": "verified",
+          "detail": "kernel contains evidence matching fp32_accumulator",
+          "step_id": "S2"
+        },
+        {
+          "source": "hy3_judge",
+          "state": "verified",
+          "detail": "Correctly captures RMSNorm formula, FP32 accumulation requirement, and non-aligned hidden support.",
+          "step_id": null
+        },
+        {
+          "source": "hy3_judge",
+          "state": "verified",
+          "detail": "O(tokens*hidden) time and memory for full FP32 reduction is standard and plausible for this approach.",
+          "step_id": null
+        },
+        {
+          "source": "hy3_judge",
+          "state": "verified",
+          "detail": "Kernel casts to float32 and computes mean of squares then normalizes with weight; static evidence and correctness pass support claim.",
+          "step_id": "S1"
+        },
+        {
+          "source": "hy3_judge",
+          "state": "verified",
+          "detail": "x and weight cast to float32 before reduction; correctness cases including bf16 pass within tolerance, supporting claim.",
+          "step_id": "S2"
+        },
+        {
+          "source": "hy3_judge",
+          "state": "verified",
+          "detail": "Uses mean(dim=-1) over full last dim with no alignment padding; hidden=111 case passes, confirming arbitrary size support.",
+          "step_id": "S3"
+        }
+      ],
+      "execution": {
+        "compile": "not_run",
+        "sanitizer": "not_run",
+        "public_tests": "passed",
+        "hidden_tests": "passed",
+        "metamorphic_tests": "not_run",
+        "performance": "not_evaluated",
+        "details": {}
+      },
+      "cases": [
+        {
+          "case_id": "rms-public-1024",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=0.002"
+        },
+        {
+          "case_id": "rms-hidden-111",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=0.002"
+        },
+        {
+          "case_id": "rms-hidden-bf16",
+          "passed": true,
+          "max_abs_error": 0.0078125,
+          "detail": "tolerance=0.02"
+        }
+      ]
+    },
+    {
+      "sample_id": "hy3-live-sampling-1787489746",
+      "task_id": "sampling",
+      "kind": "hy3_live_run",
+      "model": "hy3",
+      "source": "run_hy3_generator",
+      "captured_at": "2026-08-23T12:55:46",
+      "with_judge": true,
+      "process_valid": false,
+      "final_answer_correct": false,
+      "error_type": [
+        "SPEC.output_contract_violation",
+        "IMPL.shape_mismatch",
+        "IMPL.claim_not_implemented"
+      ],
+      "evidence": [
+        {
+          "source": "static_analysis",
+          "state": "verified",
+          "detail": "kernel contains evidence matching fp32_accumulator",
+          "step_id": "S5"
+        },
+        {
+          "source": "hy3_judge",
+          "state": "verified",
+          "detail": "Correctly captures top-k/top-p/min-p order, legal candidates, seeded reproducibility, and I/O specs.",
+          "step_id": null
+        },
+        {
+          "source": "hy3_judge",
+          "state": "verified",
+          "detail": "O(batch*vocab*log(vocab)) from topk/sort is plausible for CPU reference.",
+          "step_id": null
+        },
+        {
+          "source": "hy3_judge",
+          "state": "verified",
+          "detail": "Function candidate(logits, top_k, top_p, min_p) returns squeezed int32 tensor; matches spec.",
+          "step_id": "S1"
+        },
+        {
+          "source": "hy3_judge",
+          "state": "verified",
+          "detail": "top_k filter uses torch.topk and scatter to keep top-k as values, others -inf; skips if top_k<=0.",
+          "step_id": "S2"
+        },
+        {
+          "source": "hy3_judge",
+          "state": "contradicted",
+          "detail": "top_p masking uses remove_idx and batch_idx with expand_as on 2D index tensors causing RuntimeError in tests; logic flawed for batched indexing.",
+          "step_id": "S3"
+        },
+        {
+          "source": "hy3_judge",
+          "state": "insufficient_evidence",
+          "detail": "min_p filter code present and depends on S3 probs, but S3 failure breaks chain; cannot confirm correctness independently.",
+          "step_id": "S4"
+        },
+        {
+          "source": "hy3_judge",
+          "state": "verified",
+          "detail": "Static check found fp32 usage (logits.to(float32), softmax fp32); plausible accumulator stability.",
+          "step_id": "S5"
+        },
+        {
+          "source": "hy3_judge",
+          "state": "contradicted",
+          "detail": "torch.multinomial with fixed-seed generator present, but correctness tests fail (runtime errors, not sampled) so reproducibility unmet.",
+          "step_id": "S6"
+        }
+      ],
+      "execution": {
+        "compile": "not_run",
+        "sanitizer": "not_run",
+        "public_tests": "failed",
+        "hidden_tests": "failed",
+        "metamorphic_tests": "not_run",
+        "performance": "not_evaluated",
+        "details": {}
+      },
+      "cases": [
+        {
+          "case_id": "sampling-topk",
+          "passed": false,
+          "max_abs_error": Infinity,
+          "detail": "tolerance=1e-06"
+        },
+        {
+          "case_id": "sampling-topp-tail",
+          "passed": false,
+          "max_abs_error": Infinity,
+          "detail": "RuntimeError: expand(torch.LongTensor{[2, 1]}, size=[220]): the number of sizes provided (1) must be greater or equal to the number of dimensions in the tensor (2)"
+        },
+        {
+          "case_id": "sampling-joint",
+          "passed": false,
+          "max_abs_error": Infinity,
+          "detail": "RuntimeError: expand(torch.LongTensor{[4, 1]}, size=[1003]): the number of sizes provided (1) must be greater or equal to the number of dimensions in the tensor (2)"
+        }
+      ]
+    }
+  ]
+}

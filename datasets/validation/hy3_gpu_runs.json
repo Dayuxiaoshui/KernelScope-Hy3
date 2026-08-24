@@ -1,0 +1,734 @@
+{
+  "schema_version": "1.0",
+  "samples": [
+    {
+      "sample_id": "hy3-gpu-rmsnorm-1787488491",
+      "task_id": "rmsnorm",
+      "kind": "hy3_gpu_run",
+      "source": "run_hy3_gpu",
+      "device": 5,
+      "captured_at": "2026-08-23T12:34:51",
+      "correctness_ok": true,
+      "cases": [
+        {
+          "case_id": "rms-public-1024",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=0.002",
+          "measurement": {
+            "hy3_candidate": {
+              "provider": "hy3_candidate",
+              "median_us": 82.10079967975616,
+              "p10_us": 76.08960270881653,
+              "p90_us": 94.57600116729736,
+              "cv": 0.17794121850156236,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            },
+            "torch_oracle": {
+              "provider": "torch_oracle",
+              "median_us": 87.74240016937256,
+              "p10_us": 80.88319897651672,
+              "p90_us": 103.80159616470337,
+              "cv": 0.13345970641172653,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            }
+          },
+          "speedup_vs_oracle": 1.0687155364091716,
+          "environment": {
+            "cuda_available": true,
+            "device_index": 5,
+            "device_name": "NVIDIA H200",
+            "compute_capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150111977472,
+            "torch_version": "2.11.0+cu130",
+            "torch_cuda_version": "13.0"
+          }
+        },
+        {
+          "case_id": "rms-hidden-111",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=0.002",
+          "measurement": {
+            "hy3_candidate": {
+              "provider": "hy3_candidate",
+              "median_us": 70.8976000547409,
+              "p10_us": 69.35359835624695,
+              "p90_us": 106.13119602203369,
+              "cv": 0.17986072602244535,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            },
+            "torch_oracle": {
+              "provider": "torch_oracle",
+              "median_us": 75.4368007183075,
+              "p10_us": 74.62080121040344,
+              "p90_us": 79.86239790916443,
+              "cv": 0.2072324939065067,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            }
+          },
+          "speedup_vs_oracle": 1.0640247435747023,
+          "environment": {
+            "cuda_available": true,
+            "device_index": 5,
+            "device_name": "NVIDIA H200",
+            "compute_capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150111977472,
+            "torch_version": "2.11.0+cu130",
+            "torch_cuda_version": "13.0"
+          }
+        },
+        {
+          "case_id": "rms-hidden-bf16",
+          "passed": true,
+          "max_abs_error": 0.0078125,
+          "detail": "tolerance=0.02",
+          "measurement": {
+            "hy3_candidate": {
+              "provider": "hy3_candidate",
+              "median_us": 64.87520039081573,
+              "p10_us": 63.177597522735596,
+              "p90_us": 68.32320094108582,
+              "cv": 0.07721021821850496,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            },
+            "torch_oracle": {
+              "provider": "torch_oracle",
+              "median_us": 69.86719965934753,
+              "p10_us": 68.55999827384949,
+              "p90_us": 78.33600044250488,
+              "cv": 0.24355087065223308,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            }
+          },
+          "speedup_vs_oracle": 1.0769477279216004,
+          "environment": {
+            "cuda_available": true,
+            "device_index": 5,
+            "device_name": "NVIDIA H200",
+            "compute_capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150111977472,
+            "torch_version": "2.11.0+cu130",
+            "torch_cuda_version": "13.0"
+          }
+        }
+      ]
+    },
+    {
+      "sample_id": "hy3-gpu-online_softmax-1787488507",
+      "task_id": "online_softmax",
+      "kind": "hy3_gpu_run",
+      "source": "run_hy3_gpu",
+      "device": 5,
+      "captured_at": "2026-08-23T12:35:07",
+      "correctness_ok": true,
+      "cases": [
+        {
+          "case_id": "softmax-public",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=0.002",
+          "measurement": {
+            "hy3_candidate": {
+              "provider": "hy3_candidate",
+              "median_us": 179.65280413627625,
+              "p10_us": 158.22080373764038,
+              "p90_us": 192.51840114593506,
+              "cv": 0.06831398323933584,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            },
+            "torch_oracle": {
+              "provider": "torch_oracle",
+              "median_us": 111.45600080490112,
+              "p10_us": 108.63360166549683,
+              "p90_us": 127.73760557174683,
+              "cv": 0.11247394543512464,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            }
+          },
+          "speedup_vs_oracle": 0.6203966664520071,
+          "environment": {
+            "cuda_available": true,
+            "device_index": 5,
+            "device_name": "NVIDIA H200",
+            "compute_capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150111977472,
+            "torch_version": "2.11.0+cu130",
+            "torch_cuda_version": "13.0"
+          }
+        },
+        {
+          "case_id": "softmax-hidden-tail",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=0.002",
+          "measurement": {
+            "hy3_candidate": {
+              "provider": "hy3_candidate",
+              "median_us": 153.0511975288391,
+              "p10_us": 149.67360496520996,
+              "p90_us": 175.85920095443726,
+              "cv": 0.1511961128732231,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            },
+            "torch_oracle": {
+              "provider": "torch_oracle",
+              "median_us": 101.0815978050232,
+              "p10_us": 99.14559721946716,
+              "p90_us": 112.01599836349487,
+              "cv": 0.05643751405970544,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            }
+          },
+          "speedup_vs_oracle": 0.6604430376049596,
+          "environment": {
+            "cuda_available": true,
+            "device_index": 5,
+            "device_name": "NVIDIA H200",
+            "compute_capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150111977472,
+            "torch_version": "2.11.0+cu130",
+            "torch_cuda_version": "13.0"
+          }
+        },
+        {
+          "case_id": "softmax-hidden-mask",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=1e-05",
+          "measurement": {
+            "hy3_candidate": {
+              "provider": "hy3_candidate",
+              "median_us": 129.60799932479858,
+              "p10_us": 127.44959592819214,
+              "p90_us": 154.76160049438477,
+              "cv": 0.08343419878292643,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            },
+            "torch_oracle": {
+              "provider": "torch_oracle",
+              "median_us": 125.18240213394165,
+              "p10_us": 123.28959703445435,
+              "p90_us": 135.0592017173767,
+              "cv": 0.07309739115558259,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            }
+          },
+          "speedup_vs_oracle": 0.9658539811283843,
+          "environment": {
+            "cuda_available": true,
+            "device_index": 5,
+            "device_name": "NVIDIA H200",
+            "compute_capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150111977472,
+            "torch_version": "2.11.0+cu130",
+            "torch_cuda_version": "13.0"
+          }
+        }
+      ]
+    },
+    {
+      "sample_id": "hy3-gpu-hpc_rmsnorm_scale-1787488519",
+      "task_id": "hpc_rmsnorm_scale",
+      "kind": "hy3_gpu_run",
+      "source": "run_hy3_gpu",
+      "device": 5,
+      "captured_at": "2026-08-23T12:35:19",
+      "correctness_ok": true,
+      "cases": [
+        {
+          "case_id": "scaled-rms-public",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=0.15",
+          "measurement": {
+            "hy3_candidate": {
+              "provider": "hy3_candidate",
+              "median_us": 71.04960083961487,
+              "p10_us": 69.30559873580933,
+              "p90_us": 76.28160119056702,
+              "cv": 0.11333672837677936,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            },
+            "torch_oracle": {
+              "provider": "torch_oracle",
+              "median_us": 98.95359873771667,
+              "p10_us": 96.42879962921143,
+              "p90_us": 115.78559875488281,
+              "cv": 0.12255840054596084,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            }
+          },
+          "speedup_vs_oracle": 1.3927396856330188,
+          "environment": {
+            "cuda_available": true,
+            "device_index": 5,
+            "device_name": "NVIDIA H200",
+            "compute_capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150111977472,
+            "torch_version": "2.11.0+cu130",
+            "torch_cuda_version": "13.0"
+          }
+        },
+        {
+          "case_id": "scaled-rms-hidden",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=0.15",
+          "measurement": {
+            "hy3_candidate": {
+              "provider": "hy3_candidate",
+              "median_us": 79.4160008430481,
+              "p10_us": 77.3792028427124,
+              "p90_us": 84.10559892654419,
+              "cv": 0.040032691956713586,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            },
+            "torch_oracle": {
+              "provider": "torch_oracle",
+              "median_us": 110.87360382080078,
+              "p10_us": 106.63039684295654,
+              "p90_us": 119.22240257263184,
+              "cv": 0.08021611110214971,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            }
+          },
+          "speedup_vs_oracle": 1.3961116480786178,
+          "environment": {
+            "cuda_available": true,
+            "device_index": 5,
+            "device_name": "NVIDIA H200",
+            "compute_capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150111977472,
+            "torch_version": "2.11.0+cu130",
+            "torch_cuda_version": "13.0"
+          }
+        }
+      ]
+    },
+    {
+      "sample_id": "hy3-gpu-hpc_route_gemm-1787488538",
+      "task_id": "hpc_route_gemm",
+      "kind": "hy3_gpu_run",
+      "source": "run_hy3_gpu",
+      "device": 5,
+      "captured_at": "2026-08-23T12:35:38",
+      "correctness_ok": true,
+      "cases": [
+        {
+          "case_id": "route-public",
+          "passed": true,
+          "max_abs_error": 5.7220458984375e-06,
+          "detail": "tolerance=1e-05",
+          "measurement": {
+            "hy3_candidate": {
+              "provider": "hy3_candidate",
+              "median_us": 88.4656012058258,
+              "p10_us": 86.97280287742615,
+              "p90_us": 109.38880443572998,
+              "cv": 0.08739999597742677,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            },
+            "torch_oracle": {
+              "provider": "torch_oracle",
+              "median_us": 103.58080267906189,
+              "p10_us": 101.65760517120361,
+              "p90_us": 106.67200088500977,
+              "cv": 0.07543687060279305,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            }
+          },
+          "speedup_vs_oracle": 1.1708596478993993,
+          "environment": {
+            "cuda_available": true,
+            "device_index": 5,
+            "device_name": "NVIDIA H200",
+            "compute_capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150111977472,
+            "torch_version": "2.11.0+cu130",
+            "torch_cuda_version": "13.0"
+          }
+        },
+        {
+          "case_id": "route-hidden-tail",
+          "passed": true,
+          "max_abs_error": 3.814697265625e-06,
+          "detail": "tolerance=1e-05",
+          "measurement": {
+            "hy3_candidate": {
+              "provider": "hy3_candidate",
+              "median_us": 93.58560144901276,
+              "p10_us": 91.89119935035706,
+              "p90_us": 97.33759760856628,
+              "cv": 0.03135585764825839,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            },
+            "torch_oracle": {
+              "provider": "torch_oracle",
+              "median_us": 113.96160125732422,
+              "p10_us": 111.70879602432251,
+              "p90_us": 118.9695954322815,
+              "cv": 0.05072427540492431,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            }
+          },
+          "speedup_vs_oracle": 1.2177257985504608,
+          "environment": {
+            "cuda_available": true,
+            "device_index": 5,
+            "device_name": "NVIDIA H200",
+            "compute_capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150111977472,
+            "torch_version": "2.11.0+cu130",
+            "torch_cuda_version": "13.0"
+          }
+        },
+        {
+          "case_id": "route-hidden-residual",
+          "passed": true,
+          "max_abs_error": 7.62939453125e-06,
+          "detail": "tolerance=1e-05",
+          "measurement": {
+            "hy3_candidate": {
+              "provider": "hy3_candidate",
+              "median_us": 89.29600119590759,
+              "p10_us": 87.38240003585815,
+              "p90_us": 113.78560066223145,
+              "cv": 0.6229334207384771,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            },
+            "torch_oracle": {
+              "provider": "torch_oracle",
+              "median_us": 109.47999954223633,
+              "p10_us": 106.05759620666504,
+              "p90_us": 119.94240283966064,
+              "cv": 0.07068991068607586,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            }
+          },
+          "speedup_vs_oracle": 1.2260347392493738,
+          "environment": {
+            "cuda_available": true,
+            "device_index": 5,
+            "device_name": "NVIDIA H200",
+            "compute_capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150111977472,
+            "torch_version": "2.11.0+cu130",
+            "torch_cuda_version": "13.0"
+          }
+        }
+      ]
+    },
+    {
+      "sample_id": "hy3-gpu-merge_state-1787488576",
+      "task_id": "merge_state",
+      "kind": "hy3_gpu_run",
+      "source": "run_hy3_gpu",
+      "device": 5,
+      "captured_at": "2026-08-23T12:36:16",
+      "correctness_ok": true,
+      "cases": [
+        {
+          "case_id": "merge-public",
+          "passed": true,
+          "max_abs_error": 4.76837158203125e-07,
+          "detail": "tolerance=1e-05",
+          "measurement": {
+            "hy3_candidate": {
+              "provider": "hy3_candidate",
+              "median_us": 347.1343994140625,
+              "p10_us": 343.47519874572754,
+              "p90_us": 360.47680377960205,
+              "cv": 0.04466315275928999,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            },
+            "torch_oracle": {
+              "provider": "torch_oracle",
+              "median_us": 197.2607970237732,
+              "p10_us": 193.17439794540405,
+              "p90_us": 209.58080291748047,
+              "cv": 0.05063047692949496,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            }
+          },
+          "speedup_vs_oracle": 0.5682548239435072,
+          "environment": {
+            "cuda_available": true,
+            "device_index": 5,
+            "device_name": "NVIDIA H200",
+            "compute_capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150111977472,
+            "torch_version": "2.11.0+cu130",
+            "torch_cuda_version": "13.0"
+          }
+        },
+        {
+          "case_id": "merge-hidden-tail",
+          "passed": true,
+          "max_abs_error": 2.384185791015625e-07,
+          "detail": "tolerance=1e-05",
+          "measurement": {
+            "hy3_candidate": {
+              "provider": "hy3_candidate",
+              "median_us": 332.20640420913696,
+              "p10_us": 328.90241146087646,
+              "p90_us": 365.2031898498535,
+              "cv": 0.08815486974984543,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            },
+            "torch_oracle": {
+              "provider": "torch_oracle",
+              "median_us": 188.54239583015442,
+              "p10_us": 156.387197971344,
+              "p90_us": 240.5344009399414,
+              "cv": 0.26302299877827495,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            }
+          },
+          "speedup_vs_oracle": 0.5675459396365508,
+          "environment": {
+            "cuda_available": true,
+            "device_index": 5,
+            "device_name": "NVIDIA H200",
+            "compute_capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150111977472,
+            "torch_version": "2.11.0+cu130",
+            "torch_cuda_version": "13.0"
+          }
+        },
+        {
+          "case_id": "merge-hidden-inf",
+          "passed": true,
+          "max_abs_error": 2.384185791015625e-07,
+          "detail": "tolerance=1e-05",
+          "measurement": {
+            "hy3_candidate": {
+              "provider": "hy3_candidate",
+              "median_us": 349.50239658355713,
+              "p10_us": 322.2399950027466,
+              "p90_us": 544.0735816955566,
+              "cv": 0.2501926861825935,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            },
+            "torch_oracle": {
+              "provider": "torch_oracle",
+              "median_us": 150.86399912834167,
+              "p10_us": 54.71680164337158,
+              "p90_us": 323.2640027999878,
+              "cv": 0.7047323842611585,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            }
+          },
+          "speedup_vs_oracle": 0.43165368994050357,
+          "environment": {
+            "cuda_available": true,
+            "device_index": 5,
+            "device_name": "NVIDIA H200",
+            "compute_capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150111977472,
+            "torch_version": "2.11.0+cu130",
+            "torch_cuda_version": "13.0"
+          }
+        }
+      ]
+    },
+    {
+      "sample_id": "hy3-gpu-rmsnorm-1787489925",
+      "task_id": "rmsnorm",
+      "kind": "hy3_gpu_run",
+      "source": "run_hy3_gpu",
+      "device": 3,
+      "captured_at": "2026-08-23T12:58:45",
+      "correctness_ok": true,
+      "cases": [
+        {
+          "case_id": "rms-public-1024",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=0.002",
+          "measurement": {
+            "hy3_candidate": {
+              "provider": "hy3_candidate",
+              "median_us": 70.1664000749588,
+              "p10_us": 68.30080151557922,
+              "p90_us": 75.50399899482727,
+              "cv": 0.07094131928112843,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            },
+            "torch_oracle": {
+              "provider": "torch_oracle",
+              "median_us": 72.50079810619354,
+              "p10_us": 71.00160121917725,
+              "p90_us": 79.15840148925781,
+              "cv": 0.1299677914047329,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            }
+          },
+          "speedup_vs_oracle": 1.0332694570156216,
+          "environment": {
+            "cuda_available": true,
+            "device_index": 3,
+            "device_name": "NVIDIA H200",
+            "compute_capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150111977472,
+            "torch_version": "2.11.0+cu130",
+            "torch_cuda_version": "13.0"
+          }
+        },
+        {
+          "case_id": "rms-hidden-111",
+          "passed": true,
+          "max_abs_error": 0.0,
+          "detail": "tolerance=0.002",
+          "measurement": {
+            "hy3_candidate": {
+              "provider": "hy3_candidate",
+              "median_us": 66.76959991455078,
+              "p10_us": 65.73119759559631,
+              "p90_us": 72.57919907569885,
+              "cv": 0.0714331677109413,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            },
+            "torch_oracle": {
+              "provider": "torch_oracle",
+              "median_us": 72.29439914226532,
+              "p10_us": 70.78400254249573,
+              "p90_us": 76.48640275001526,
+              "cv": 0.04869496071215823,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            }
+          },
+          "speedup_vs_oracle": 1.082744231428449,
+          "environment": {
+            "cuda_available": true,
+            "device_index": 3,
+            "device_name": "NVIDIA H200",
+            "compute_capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150111977472,
+            "torch_version": "2.11.0+cu130",
+            "torch_cuda_version": "13.0"
+          }
+        },
+        {
+          "case_id": "rms-hidden-bf16",
+          "passed": true,
+          "max_abs_error": 0.0078125,
+          "detail": "tolerance=0.02",
+          "measurement": {
+            "hy3_candidate": {
+              "provider": "hy3_candidate",
+              "median_us": 66.38720035552979,
+              "p10_us": 65.24800062179565,
+              "p90_us": 70.78080177307129,
+              "cv": 0.046578534737606335,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            },
+            "torch_oracle": {
+              "provider": "torch_oracle",
+              "median_us": 71.64320051670074,
+              "p10_us": 70.23360133171082,
+              "p90_us": 81.27040266990662,
+              "cv": 0.07242636149393418,
+              "workspace_bytes": 0,
+              "clean_environment": true
+            }
+          },
+          "speedup_vs_oracle": 1.079171890560575,
+          "environment": {
+            "cuda_available": true,
+            "device_index": 3,
+            "device_name": "NVIDIA H200",
+            "compute_capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150111977472,
+            "torch_version": "2.11.0+cu130",
+            "torch_cuda_version": "13.0"
+          }
+        }
+      ]
+    }
+  ]
+}
