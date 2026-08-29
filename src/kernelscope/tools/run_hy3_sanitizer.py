@@ -20,6 +20,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--load", help="replay a previously --save'd generation instead of calling hy3")
     parser.add_argument("--device", type=int, default=3, help="physical CUDA device index")
     parser.add_argument("--timeout", type=float, default=120.0)
+    parser.add_argument("--max-tokens", type=int, default=8192, help="hy3 completion budget; raise for tasks whose reasoning_content exhausts the default before emitting the answer")
     parser.add_argument("--record", help="append a summary record to this validation-set-style JSON file")
     args = parser.parse_args(argv)
 
@@ -29,7 +30,7 @@ def main(argv: list[str] | None = None) -> int:
             loaded = json.load(handle)
         payload = loaded["parsed"]
     else:
-        raw = call_hy3(build_messages(task, allow_triton=True), model=args.model)
+        raw = call_hy3(build_messages(task, allow_triton=True), model=args.model, max_tokens=args.max_tokens)
         payload = extract_json(raw)
 
     cases = cases_for(task.task_id)

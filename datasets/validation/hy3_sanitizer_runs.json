@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "samples": [
+    {
+      "sample_id": "hy3-sanitizer-rmsnorm-1788013319",
+      "task_id": "rmsnorm",
+      "kind": "hy3_sanitizer_run",
+      "model": "hy3",
+      "source": "run_hy3_sanitizer",
+      "captured_at": "2026-08-29T14:21:59",
+      "compile": "passed",
+      "sanitizer": "passed",
+      "cases": [
+        {
+          "case_id": "rms-public-1024",
+          "passed": true,
+          "max_abs_error": 0.001953125,
+          "detail": "tolerance=0.002",
+          "compile_ok": true,
+          "sanitizer": {
+            "state": "passed",
+            "error_count": 0,
+            "raw_tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\n"
+          }
+        },
+        {
+          "case_id": "rms-hidden-111",
+          "passed": false,
+          "max_abs_error": 0.00390625,
+          "detail": "tolerance=0.002",
+          "compile_ok": true,
+          "sanitizer": {
+            "state": "passed",
+            "error_count": 0,
+            "raw_tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\n"
+          }
+        },
+        {
+          "case_id": "rms-hidden-bf16",
+          "passed": false,
+          "max_abs_error": 0.03125,
+          "detail": "tolerance=0.02",
+          "compile_ok": true,
+          "sanitizer": {
+            "state": "passed",
+            "error_count": 0,
+            "raw_tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\n"
+          }
+        }
+      ]
+    },
+    {
+      "sample_id": "hy3-sanitizer-merge_state-1788013420",
+      "task_id": "merge_state",
+      "kind": "hy3_sanitizer_run",
+      "model": "hy3",
+      "source": "run_hy3_sanitizer",
+      "captured_at": "2026-08-29T14:23:40",
+      "compile": "passed",
+      "sanitizer": "passed",
+      "cases": [
+        {
+          "case_id": "merge-public",
+          "passed": true,
+          "max_abs_error": 3.5762786865234375e-07,
+          "detail": "tolerance=1e-05",
+          "compile_ok": true,
+          "sanitizer": {
+            "state": "passed",
+            "error_count": 0,
+            "raw_tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\n"
+          }
+        },
+        {
+          "case_id": "merge-hidden-tail",
+          "passed": true,
+          "max_abs_error": 2.384185791015625e-07,
+          "detail": "tolerance=1e-05",
+          "compile_ok": true,
+          "sanitizer": {
+            "state": "passed",
+            "error_count": 0,
+            "raw_tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\n"
+          }
+        },
+        {
+          "case_id": "merge-hidden-inf",
+          "passed": false,
+          "max_abs_error": Infinity,
+          "detail": "tolerance=1e-05",
+          "compile_ok": true,
+          "sanitizer": {
+            "state": "passed",
+            "error_count": 0,
+            "raw_tail": "========= COMPUTE-SANITIZER\n========= ERROR SUMMARY: 0 errors\n"
+          }
+        }
+      ]
+    }
+  ]
+}

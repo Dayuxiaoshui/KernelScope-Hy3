@@ -30,7 +30,7 @@ def call_hy3(
     *,
     model: str = "hy3",
     temperature: float = 0.2,
-    max_tokens: int = 4096,
+    max_tokens: int = 8192,
 ) -> str:
     url = f"{_base_url()}/v1/chat/completions"
     body = json.dumps(
@@ -69,6 +69,19 @@ def call_hy3(
     except urllib.error.URLError as exc:
         raise Hy3ClientError(f"failed to reach {url}: {exc}") from exc
     try:
-        return payload["choices"][0]["message"]["content"]
+        choice = payload["choices"][0]
+        content = choice["message"]["content"]
     except (KeyError, IndexError, TypeError) as exc:
+        finish_reason = payload.get("choices", [{}])[0].get("finish_reason") if payload.get("choices") else None
+        if finish_reason == "length":
+            raise Hy3ClientError(
+                f"{model} exhausted max_tokens={max_tokens} on reasoning before emitting an answer "
+                f"(finish_reason=length, usage={payload.get('usage')}). Retry with a larger max_tokens."
+            ) from exc
         raise Hy3ClientError(f"unexpected response shape from {url}: {payload}") from exc
+    if not content:
+        raise Hy3ClientError(
+            f"{model} returned empty content (finish_reason={choice.get('finish_reason')}); "
+            f"likely exhausted max_tokens={max_tokens} on reasoning."
+        )
+    return content

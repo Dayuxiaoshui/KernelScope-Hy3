@@ -38,6 +38,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--allow-triton", action="store_true", help="permit hy3 to write a real Triton kernel; correctness gate runs on real CUDA via hy3_gpu_runner instead of the CPU-only runner")
     parser.add_argument("--device", type=int, default=3, help="physical CUDA device index, only used with --allow-triton")
     parser.add_argument("--timeout", type=float, default=20.0)
+    parser.add_argument("--max-tokens", type=int, default=8192, help="hy3 completion budget; raise for tasks whose reasoning_content exhausts the default before emitting the answer")
     parser.add_argument("--record", help="append a summary record to this validation-set-style JSON file")
     args = parser.parse_args(argv)
     if args.allow_triton and args.timeout <= 20.0:
@@ -49,7 +50,7 @@ def main(argv: list[str] | None = None) -> int:
             loaded = json.load(handle)
         raw, payload = loaded["raw"], loaded["parsed"]
     else:
-        raw = call_hy3(build_messages(task, allow_triton=args.allow_triton), model=args.model)
+        raw = call_hy3(build_messages(task, allow_triton=args.allow_triton), model=args.model, max_tokens=args.max_tokens)
         payload = extract_json(raw)
 
     if args.save:

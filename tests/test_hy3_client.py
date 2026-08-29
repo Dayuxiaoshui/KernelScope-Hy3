@@ -61,6 +61,21 @@ def test_call_hy3_maps_403_to_helpful_message(monkeypatch):
             call_hy3([{"role": "user", "content": "hello"}])
 
 
+def test_call_hy3_reports_truncation_when_reasoning_exhausts_budget(monkeypatch):
+    monkeypatch.setenv("UNIAPI_KEY", "univ-test-key")
+
+    def fake_urlopen(request, timeout=None):
+        body = {
+            "choices": [{"message": {"role": "assistant", "reasoning_content": "..."}, "finish_reason": "length"}],
+            "usage": {"completion_tokens": 4096, "reasoning_tokens": 4096},
+        }
+        return _FakeResponse(json.dumps(body).encode())
+
+    with patch("urllib.request.urlopen", fake_urlopen):
+        with pytest.raises(Hy3ClientError, match="exhausted max_tokens"):
+            call_hy3([{"role": "user", "content": "hello"}], max_tokens=4096)
+
+
 def test_extract_json_strips_markdown_fence():
     text = '```json\n{"a": 1}\n```'
     assert extract_json(text) == {"a": 1}

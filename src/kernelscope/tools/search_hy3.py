@@ -75,6 +75,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--allow-triton", action="store_true", help="permit hy3 to write a real Triton kernel; correctness gate runs on real CUDA via hy3_gpu_runner instead of the CPU-only runner")
     parser.add_argument("--device", type=int, default=3, help="physical CUDA device index, only used with --allow-triton")
     parser.add_argument("--with-judge", action="store_true", help="also call hy3 as an independent Judge each round and feed its evidence back into the next round's prompt")
+    parser.add_argument("--max-tokens", type=int, default=8192, help="hy3 completion budget; raise for tasks whose reasoning_content exhausts the default before emitting the answer")
     parser.add_argument("--record", help="append the final trace summary to this JSON file")
     args = parser.parse_args(argv)
     if args.allow_triton and args.timeout <= 20.0:
@@ -91,7 +92,7 @@ def main(argv: list[str] | None = None) -> int:
     case_reports: list[dict] = []
 
     for round_index in range(1, args.rounds + 1):
-        raw = call_hy3(messages, model=args.model)
+        raw = call_hy3(messages, model=args.model, max_tokens=args.max_tokens)
         try:
             payload = extract_json(raw)
         except ValueError as exc:

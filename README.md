@@ -46,7 +46,7 @@ hy/
 │   ├── task_manifest.json      # 机器可读题集 manifest
 │   ├── validation/             # 72 条受控错误 + 18 条正确/伪正确对照 + 真实 hy3 run 记录
 │   └── baselines/              # H200 实测数据和审计说明
-├── tests/                     # 74 个自动化测试
+├── tests/                     # 75 个自动化测试
 ├── IMPLEMENTATION_PLAN.md     # 完整设计方案和比赛交付规划
 └── pyproject.toml
 ```
@@ -85,7 +85,7 @@ flowchart TD
 
 ### 题集
 
-当前目录包含 17 个任务，覆盖 SGLang、Miles、FlashInfer、TileLang 和 Tencent HPC-Ops 来源。数据集优先抽取工业界推理引擎中真实出现的核心算子，再将其重写为独立、可校验、可定位错误的任务；上游实现用于确定语义、边界和性能目标，不直接作为模型可见的标准答案。17 个任务全部已达到 `tests_ready`（每个任务都有独立 oracle、`CaseSpec` 覆盖公开/隐藏/边界 case，并接入 `harness.build_case` 和 GPU runner）：
+当前目录包含 17 个任务，覆盖 SGLang、Miles、FlashInfer、TileLang 和 Tencent HPC-Ops 来源。数据集优先抽取工业界推理引擎中真实出现的核心算子，再将其重写为独立、可校验、可定位错误的任务；上游实现用于确定语义、边界和性能目标，不直接作为模型可见的标准答案。17 个任务全部已达到 `tests_ready`（每个任务都有独立 oracle、`CaseSpec` 覆盖公开/隐藏/边界 case，并接入 `harness.build_case` 和 GPU runner），且全部 17 个任务都至少有一条真实 hy3 调用记录（`datasets/validation/hy3_live_runs.json`），确认接线端到端可跑通，而不只是代码静态接好但没跑过：
 
 - RMSNorm、Fused Add + RMSNorm、SiLU + Mul
 - Attention State Merge、Reduced FlashAttention、Paged Decode Attention
@@ -264,7 +264,7 @@ HPC-Ops native 正式 run 4：
 
 每条 H200 JSON 记录包含 provider、shape、correctness_gate、median/p10/p90、CV、workspace 和环境字段。共享 GPU 数据仅用于验证管线；正式数据保留独占窗口审计说明。
 
-真实 hy3 运行（live run、search trace、GPU run）的记录落在 `datasets/validation/hy3_live_runs.json`/`hy3_gpu_runs.json`；`PYTHONPATH=src python -m kernelscope.tools.summarize_hy3_runs --markdown` 按任务聚合通过率、error_type 分布、search 是否收敛和 GPU 实测 speedup，用于审计。
+真实 hy3 运行（live run、search trace、GPU run）的记录落在 `datasets/validation/hy3_live_runs.json`/`hy3_gpu_runs.json`；compute-sanitizer 沙盒运行的记录落在 `datasets/validation/hy3_sanitizer_runs.json`（逐 case 的 `compile_ok`/`passed`/`sanitizer.state`/`sanitizer.error_count`）。`PYTHONPATH=src python -m kernelscope.tools.summarize_hy3_runs --markdown` 按任务聚合通过率、error_type 分布、search 是否收敛和 GPU 实测 speedup，用于审计。
 
 ```bash
 PYTHONPATH=src pytest -q
@@ -277,6 +277,7 @@ PYTHONPATH=src python -m kernelscope.tools.generate_validation_set
 - compute-sanitizer 沙盒（`hy3_sanitizer.py`）目前只做 correctness-only 的 memcheck，不跑 benchmark（sanitizer instrumentation 下的计时没有意义），也不做文件系统隔离；网络隔离（`unshare(CLONE_NEWNET)`）已确认会和 compute-sanitizer 的进程协调机制死锁而被移除，因此该沙盒不提供网络隔离，只靠超时 + 进程组 kill + `RLIMIT_CPU` 兜底。
 - `--allow-triton` 路径下 hy3 手写的 Triton kernel 首次调用会触发真实 JIT 编译，编译耗时算进 correctness 检查那次调用里，因此该路径的默认超时提高到 120s。
 - `hy3_gpu_runs.json`/`hy3_live_runs.json` 里的数据来自共享 H200 上当时空闲的 GPU（按 `nvidia-smi` 实时选取，非固定编号），仅用于接入管线验证，不是独占正式采集；`sampling` 任务的 Test-Time Search 目前 3 轮内未收敛（top_p/min_p 归一化数学仍有误），是真实的负向研究结果而非 bug。
+- hy3 是推理模型，`reasoning_content` 可能把整个 `max_tokens` 预算耗尽，导致 `content` 字段被截断甚至为空（`finish_reason=length`）；`hy3_client.py::call_hy3` 默认 `max_tokens` 已从 4096 提到 8192，且 `run_hy3_generator.py`/`search_hy3.py`/`run_hy3_sanitizer.py` 都新增了 `--max-tokens` flag，遇到复杂任务（如 `flashattention_small`）需要手动提到 16000；截断时会抛出明确指出 `finish_reason=length` 的 `Hy3ClientError`，而不是笼统的 JSON 解析错误。
 - HPC-Ops native 当前不支持 MoE RMSNorm 性能 case。
 - HPC-Ops 原生 Route GEMM 要求 `N % 64 == 0`；评估器提供 padding adapter 支持 N=257，并将补齐/切片开销计入性能。GPU 5 正式采集已覆盖 N=257 tail。
 - 最终论文/比赛结果必须使用独占 H200 多轮数据；shared run 只用于管线验证。
@@ -284,7 +285,7 @@ PYTHONPATH=src python -m kernelscope.tools.generate_validation_set
 ## 12. 验证
 
 ```text
-74 passed
+75 passed
 ```
 
 详细设计、错误分类、评估有效性方案和 Demo 流程见 [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md)。
