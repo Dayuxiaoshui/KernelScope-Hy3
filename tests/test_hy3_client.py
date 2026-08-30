@@ -76,6 +76,32 @@ def test_call_hy3_reports_truncation_when_reasoning_exhausts_budget(monkeypatch)
             call_hy3([{"role": "user", "content": "hello"}], max_tokens=4096)
 
 
+def test_call_hy3_routes_glm_to_cc_endpoint_with_user_agent(monkeypatch):
+    monkeypatch.delenv("UNIAPI_KEY", raising=False)
+    monkeypatch.setenv("CC_API_KEY", "cc-test-key")
+    captured = {}
+
+    def fake_urlopen(request, timeout=None):
+        captured["url"] = request.full_url
+        captured["headers"] = dict(request.header_items())
+        return _FakeResponse(json.dumps({"choices": [{"message": {"content": "hi"}}]}).encode())
+
+    with patch("urllib.request.urlopen", fake_urlopen):
+        content = call_hy3([{"role": "user", "content": "hello"}], model="GLM-5.3")
+
+    assert content == "hi"
+    assert captured["url"] == "https://cc.ixg.be/v1/chat/completions"
+    assert captured["headers"]["Authorization"] == "Bearer cc-test-key"
+    ua_key = next(k for k in captured["headers"] if k.lower() == "user-agent")
+    assert "Mozilla" in captured["headers"][ua_key]
+
+
+def test_call_hy3_requires_cc_api_key_for_glm(monkeypatch):
+    monkeypatch.delenv("CC_API_KEY", raising=False)
+    with pytest.raises(Hy3ClientError, match="CC_API_KEY"):
+        call_hy3([{"role": "user", "content": "hello"}], model="GLM-5.3")
+
+
 def test_extract_json_strips_markdown_fence():
     text = '```json\n{"a": 1}\n```'
     assert extract_json(text) == {"a": 1}

@@ -40,13 +40,13 @@ hy/
 │   ├── metrics.py              # 定位准确率、召回率、Macro-F1 等
 │   ├── gpu_audit.py            # nvidia-smi compute PID 审计
 │   ├── judge.py                # 独立 Hy3 Judge 证据合并
-│   ├── providers/              # 可审计 Triton provider + hy3 client/prompt/runner/gpu_runner
-│   └── tools/                 # 采集、评分、manifest、验证集、hy3 生成/搜索/汇总工具
+│   ├── providers/              # 可审计 Triton provider + hy3 client（多 provider 路由）/prompt/runner/gpu_runner/sanitizer
+│   └── tools/                 # 采集、评分、manifest、验证集、hy3 生成/搜索/汇总、跨模型对比（compare_models.py）工具
 ├── datasets/
 │   ├── task_manifest.json      # 机器可读题集 manifest
-│   ├── validation/             # 72 条受控错误 + 18 条正确/伪正确对照 + 真实 hy3 run 记录
+│   ├── validation/             # 72 条受控错误 + 18 条正确/伪正确对照 + 真实 hy3 run 记录 + 跨模型对比记录
 │   └── baselines/              # H200 实测数据和审计说明
-├── tests/                     # 75 个自动化测试
+├── tests/                     # 77 个自动化测试
 ├── IMPLEMENTATION_PLAN.md     # 完整设计方案和比赛交付规划
 └── pyproject.toml
 ```
@@ -226,10 +226,35 @@ PYTHONPATH=src python -m kernelscope.tools.score_baselines \
 3. `providers/hy3_judge_prompt.py`/`judge.py` 实现第二个独立的 hy3 Judge 调用，审查 `task_understanding`、`steps` 依赖链、`complexity` 估计和逐步优化声明是否被 `final_kernel` 支持（对 `claims.py` 纯正则检查的语义补充）；`run_hy3_generator.py --with-judge` 把 Judge 证据与静态分析、correctness 结果合并进同一个 `EvaluationResult`。
 4. `providers/hy3_gpu_runner.py`/`tools/run_hy3_gpu.py` 把已通过 CPU correctness gate 的 hy3 candidate 搬到真实 CUDA 张量上，用 `benchmark.py::benchmark_cuda` 实测相对 `torch_oracle` 的真实 H200 速度比（隔离子进程 + 显存限额，只用当时空闲的共享 GPU，默认 GPU 3；具体索引以 `nvidia-smi` 实时确认为准，非固定）。
 5. `tools/search_hy3.py` 驱动 Test-Time Search：用 correctness/error_type 反馈让 hy3 对同一题自我修正多轮，`tools/summarize_hy3_runs.py` 汇总所有真实运行记录（live run、search trace、GPU run）供审计。
-6. `--allow-triton`（`hy3_prompt.py::build_messages`、`run_hy3_generator.py`、`search_hy3.py`）让 hy3 直接手写 `@triton.jit` kernel 源码加同签名 `candidate()` wrapper，而不是只把 CPU 验证过的纯 PyTorch candidate 搬到 GPU 上跑；correctness gate 改走 GPU 分支（Triton candidate 在无 CUDA 的子进程里必然失败），执行命名空间预置 `torch`/`triton`/`triton.language`。已用于 `merge_state`（唯一 `backend="triton"` 任务）和 `rmsnorm` 的真实 hy3 调用验证。
+6. `--allow-triton`（`hy3_prompt.py::build_messages`、`run_hy3_generator.py`、`search_hy3.py`）让 hy3 直接手写 `@triton.jit` kernel 源码加同签名 `candidate()` wrapper，而不是只把 CPU 验证过的纯 PyTorch candidate 搬到 GPU 上跑；correctness gate 改走 GPU 分支（Triton candidate 在无 CUDA 的子进程里必然失败），执行命名空间预置 `torch`/`triton`/`triton.language`。已在真实 H200（GPU 索引以 `nvidia-smi` 实时确认，本次为 GPU 5）上用 `merge_state`（唯一 `backend="triton"` 任务）和 `rmsnorm` 验证 hy3 **以及** gpt-5：抽查生成内容确认两个模型都写出了真正的 `@triton.jit` kernel（`tl.program_id`/`tl.load`/`tl.store`/`tl.arange`/mask，显式 launch grid），不是把 PyTorch 实现伪装成 Triton。真实评分：`merge_state` hy3/gpt-5 均 3/3；`rmsnorm` hy3/gpt-5 均 1/3——两者的 `candidate()` 都硬编码假设输入恰好是 2D（`M, N = x.shape` 或显式 `assert x.dim() == 2`），大概率在题目覆盖的非对齐/空 tensor 边界 case 上失败；这是待验证的假设而非已确认的根因。记录见 `datasets/validation/model_comparison_runs.json` 的 `gpu_triton_verification` 字段。
 7. `providers/hy3_sanitizer.py`/`hy3_sanitizer_worker.py`/`tools/run_hy3_sanitizer.py` 提供真正的 compute-sanitizer 沙盒：把 GPU candidate 执行从"父进程 `multiprocessing.spawn` 内 `exec()`"改成"启动独立 `python3 -m` 子进程"，让 `compute-sanitizer --tool memcheck` 能包裹到一个真实的进程启动点，逐 case 做 correctness-only 检查（不跑 benchmark，sanitizer instrumentation 会让计时失真）并解析 `ERROR SUMMARY` 判定是否有真实内存违规。父进程侧用 `subprocess.Popen(..., start_new_session=True)` + 超时后 `killpg` 整个进程组，防止 `compute-sanitizer` 派生的 `TreeLauncherSubreaper` + worker 进程树在超时后残留（曾经验证到 7 组共 15 个孤儿进程堆积在同一张卡上）。加固逻辑只保留 `RLIMIT_CPU`：`RLIMIT_AS` 会让 compute-sanitizer 自身的 shadow-memory instrumentation 段错误，`os.unshare(CLONE_NEWNET)` 会让 `torch.cuda.set_device()` 永久卡死在 `futex_wait_queue`（compute-sanitizer 的进程树协调似乎依赖 loopback，新建网络 namespace 会破坏它）——这两点都是用最小复现探针程序隔离确认后去掉的，而不是猜测性删除。
 
 SGLang 的 RadixAttention、chunked prefill、`max_num_seqs` 等属于 Generator/Judge 服务配置，不改变底层评分协议。项目不进行后训练。
+
+### 7.1 跨模型横向对比
+
+`providers/hy3_client.py::MODEL_ROUTES` 把 Generator 调用从单一 hy3 扩展成多 provider 路由：`glm-5.3`/`glm-5.3-flash`/`gemini-2.5-flash` 走 UniAPI，`GLM-5.3`/`GLM-5.3-Flash`/`Qwen3.8-Flash-Next`/`hy4-preview` 走 `cc.ixg.be`；每个模型的 endpoint/key 环境变量在路由表里声明，key 本身仍只通过环境变量传入，不落盘。
+
+`tools/compare_models.py` 在此基础上提供跨模型对比 CLI：
+
+```bash
+UNIAPI_KEY=... PYTHONPATH=src python3 -m kernelscope.tools.compare_models \
+  --models hy3 gpt-5 glm-5.3-flash gemini-2.5-flash \
+  --tasks <task_id ...>          # 缺省为全部 17 个任务 \
+  --allow-triton --device 5      # 可选：走 GPU/Triton 分支而非 CPU correctness gate \
+  --record /path/to/output.json
+```
+
+对全部 17 个任务 x 4 个模型的真实 CPU-only 对比（`datasets/validation/model_comparison_runs.json` 的 `cpu_all_tasks` 字段）：
+
+| Model | Avg correctness rate | Avg score | Tasks OK |
+|---|---|---|---|
+| hy3 | 0.838 | 83.8 | 17/17 |
+| gpt-5 | 0.858 | 85.8 | 17/17 |
+| glm-5.3-flash | 0.294 | 29.4 | 5/17 |
+| gemini-2.5-flash | 0.725 | 70.8 | 17/17 |
+
+glm-5.3-flash 在 12/17 任务上直接以 `... timed out waiting for a response ... after 300s` 失败（即使走的是更稳定的 UniAPI 路由）；其余 5 个成功任务也普遍耗时 190-300s，说明这是模型自身推理延迟超出客户端 300s 超时（`hy3_client.py::call_hy3` 的 `urlopen(..., timeout=300)`），不是网关/路由问题。gemini-2.5-flash 在 `hpc_attention_decode`/`hpc_rope_norm_store_kv`/`hpc_route_gemm`/`sampling` 上评分为 0，弱点集中在 HPC/attention 类任务。所有模型调用 `temperature=0.2` 且未固定 seed，分数存在运行间波动（例如 `flashattention_small` 在不同轮次给过 hy3 0 分和满分两种结果），本表是单次真实运行快照而非多轮统计量。
 
 ## 8. Test-Time Kernel Search
 
@@ -264,7 +289,7 @@ HPC-Ops native 正式 run 4：
 
 每条 H200 JSON 记录包含 provider、shape、correctness_gate、median/p10/p90、CV、workspace 和环境字段。共享 GPU 数据仅用于验证管线；正式数据保留独占窗口审计说明。
 
-真实 hy3 运行（live run、search trace、GPU run）的记录落在 `datasets/validation/hy3_live_runs.json`/`hy3_gpu_runs.json`；compute-sanitizer 沙盒运行的记录落在 `datasets/validation/hy3_sanitizer_runs.json`（逐 case 的 `compile_ok`/`passed`/`sanitizer.state`/`sanitizer.error_count`）。`PYTHONPATH=src python -m kernelscope.tools.summarize_hy3_runs --markdown` 按任务聚合通过率、error_type 分布、search 是否收敛和 GPU 实测 speedup，用于审计。
+真实 hy3 运行（live run、search trace、GPU run）的记录落在 `datasets/validation/hy3_live_runs.json`/`hy3_gpu_runs.json`；compute-sanitizer 沙盒运行的记录落在 `datasets/validation/hy3_sanitizer_runs.json`（逐 case 的 `compile_ok`/`passed`/`sanitizer.state`/`sanitizer.error_count`）；跨模型（hy3/gpt-5/glm-5.3-flash/gemini-2.5-flash）的真实对比记录落在 `datasets/validation/model_comparison_runs.json`，见第 7.1 节。`PYTHONPATH=src python -m kernelscope.tools.summarize_hy3_runs --markdown` 按任务聚合通过率、error_type 分布、search 是否收敛和 GPU 实测 speedup，用于审计。
 
 ```bash
 PYTHONPATH=src pytest -q
@@ -281,11 +306,12 @@ PYTHONPATH=src python -m kernelscope.tools.generate_validation_set
 - HPC-Ops native 当前不支持 MoE RMSNorm 性能 case。
 - HPC-Ops 原生 Route GEMM 要求 `N % 64 == 0`；评估器提供 padding adapter 支持 N=257，并将补齐/切片开销计入性能。GPU 5 正式采集已覆盖 N=257 tail。
 - 最终论文/比赛结果必须使用独占 H200 多轮数据；shared run 只用于管线验证。
+- 跨模型对比（第 7.1 节）中 glm-5.3-flash 的高失败率是模型自身推理延迟超出客户端 300s 超时导致，而非路由/网关问题；`compare_models.py::run_one` 目前不落盘生成的 `final_kernel` 源码，只记录评分元数据，若要审计生成代码本身需要额外的抽查调用（结果不保证复现同一次被评分的候选，因为 `temperature=0.2` 且未固定 seed）。
 
 ## 12. 验证
 
 ```text
-75 passed
+77 passed
 ```
 
 详细设计、错误分类、评估有效性方案和 Demo 流程见 [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md)。
